@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		062B3EF11BD5627B00ADFC9C /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B3EF01BD5627B00ADFC9C /* PersonView.swift */; settings = {ASSET_TAGS = (); }; };
+		063FE1C71BBC67BA003AA01F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FE1C61BBC67BA003AA01F /* Person.swift */; settings = {ASSET_TAGS = (); }; };
 		06D718DE1BB0544800657ADF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718DD1BB0544800657ADF /* AppDelegate.swift */; };
-		06D718E01BB0544800657ADF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718DF1BB0544800657ADF /* ViewController.swift */; };
+		06D718E01BB0544800657ADF /* MinglesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718DF1BB0544800657ADF /* MinglesController.swift */; };
 		06D718E31BB0544800657ADF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06D718E11BB0544800657ADF /* Main.storyboard */; };
 		06D718E51BB0544800657ADF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06D718E41BB0544800657ADF /* Assets.xcassets */; };
 		06D718E81BB0544800657ADF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06D718E61BB0544800657ADF /* LaunchScreen.storyboard */; };
@@ -34,9 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		062B3EF01BD5627B00ADFC9C /* PersonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
+		063FE1C61BBC67BA003AA01F /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		06D718DA1BB0544800657ADF /* momentree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = momentree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06D718DD1BB0544800657ADF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		06D718DF1BB0544800657ADF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		06D718DF1BB0544800657ADF /* MinglesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinglesController.swift; sourceTree = "<group>"; };
 		06D718E21BB0544800657ADF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06D718E41BB0544800657ADF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06D718E71BB0544800657ADF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,6 +78,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		063FE1C51BBC6730003AA01F /* Supporting FIles */ = {
+			isa = PBXGroup;
+			children = (
+				06D718DD1BB0544800657ADF /* AppDelegate.swift */,
+				06D718E41BB0544800657ADF /* Assets.xcassets */,
+				06D718E61BB0544800657ADF /* LaunchScreen.storyboard */,
+				06D718E91BB0544800657ADF /* Info.plist */,
+			);
+			name = "Supporting FIles";
+			sourceTree = "<group>";
+		};
 		06D718D11BB0544800657ADF = {
 			isa = PBXGroup;
 			children = (
@@ -97,12 +112,11 @@
 		06D718DC1BB0544800657ADF /* momentree */ = {
 			isa = PBXGroup;
 			children = (
-				06D718DD1BB0544800657ADF /* AppDelegate.swift */,
-				06D718DF1BB0544800657ADF /* ViewController.swift */,
+				063FE1C51BBC6730003AA01F /* Supporting FIles */,
+				06D718DF1BB0544800657ADF /* MinglesController.swift */,
+				063FE1C61BBC67BA003AA01F /* Person.swift */,
+				062B3EF01BD5627B00ADFC9C /* PersonView.swift */,
 				06D718E11BB0544800657ADF /* Main.storyboard */,
-				06D718E41BB0544800657ADF /* Assets.xcassets */,
-				06D718E61BB0544800657ADF /* LaunchScreen.storyboard */,
-				06D718E91BB0544800657ADF /* Info.plist */,
 			);
 			path = momentree;
 			sourceTree = "<group>";
@@ -255,7 +269,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06D718E01BB0544800657ADF /* ViewController.swift in Sources */,
+				063FE1C71BBC67BA003AA01F /* Person.swift in Sources */,
+				062B3EF11BD5627B00ADFC9C /* PersonView.swift in Sources */,
+				06D718E01BB0544800657ADF /* MinglesController.swift in Sources */,
 				06D718DE1BB0544800657ADF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,6 +499,7 @@
 				06D719041BB0544900657ADF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		06D719051BB0544900657ADF /* Build configuration list for PBXNativeTarget "momentreeTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +508,7 @@
 				06D719071BB0544900657ADF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		06D719081BB0544900657ADF /* Build configuration list for PBXNativeTarget "momentreeUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +517,7 @@
 				06D7190A1BB0544900657ADF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
