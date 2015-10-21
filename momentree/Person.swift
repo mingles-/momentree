@@ -139,6 +139,11 @@ class Person {
         return decendantList
     }
     
+    func getRelatives() -> [Person]
+    {
+        return self.getDecendants() + self.getDecendants()
+    }
+    
     func toJson() -> String
     {
         return "123"
