@@ -70,7 +70,7 @@ class TreeGenerationOneTests: XCTestCase {
         
     }
     
-    func testChildren(){
+    func testChildren() {
         
         var lesleysChildren1 = [String]()
         if self.lesley.children.count != 0 {
@@ -96,28 +96,57 @@ class TreeGenerationOneTests: XCTestCase {
         
     }
     
-    func testRelatonship() {
-        var lesleyRelationships = [String]()
-        if self.lesley.relationship.count != 0 {
-            for x in self.lesley.relationship {
-                lesleyRelationships.append(x.name)
-            }
-        }
-//        let lesleyRelationships2 = ["stuart"]
-        
-        XCTAssertEqual(lesleyRelationships, ["stuart"])
-        
-        var stuartRelationships = [String]()
-        if self.stuart.relationship.count != 0 {
-            for x in self.stuart.relationship {
-                stuartRelationships.append(x.name)
-            }
-        }
-        let stuartRelationships2 = ["lesley"]
-
-        
-        XCTAssertEqual(stuartRelationships, stuartRelationships2)
+//    func testRelationship() {
+//        var lesleyRelationships = [String]()
+//        if self.lesley.relationship.count != 0 {
+//            for x in self.lesley.relationship {
+//                lesleyRelationships.append(x.name)
+//            }
+//        }
+//        
+//        XCTAssertEqual(lesleyRelationships, ["stuart"])
+//        
+//        var stuartRelationships = [String]()
+//        if self.stuart.relationship.count != 0 {
+//            for x in self.stuart.relationship {
+//                stuartRelationships.append(x.name)
+//            }
+//        }
+//        let stuartRelationships2 = ["lesley"]
+//        
+//        XCTAssertEqual(stuartRelationships, stuartRelationships2)
+//    }
+    
+    func testSpouse() {
+        XCTAssertEqual(stuart.spouse!.name, lesley.name)
+        XCTAssertEqual(lesley.spouse!.name, stuart.name)
     }
+    
+    func testRemoveSpouse() {
+        stuart.removeSpouse()
+        XCTAssertNil(stuart.spouse)
+        XCTAssertNil(lesley.spouse)
+    }
+    
+    func testRemoveParents() {
+        mingles.removeParents()
+        XCTAssertNil(mingles.mum)
+        XCTAssertNil(mingles.dad)
+    }
+    
+    func testRemoveParentsIndividually() {
+        let dad = mingles.dad
+        let mum = mingles.mum
+        
+        mingles.removeMum()
+        XCTAssertNil(mingles.mum)
+        mingles.removeDad()
+        XCTAssertNil(mingles.dad)
+        
+        XCTAssertNil(dad?.spouse)
+        XCTAssertNil(mum?.spouse)
+    }
+    
     
     
 }
