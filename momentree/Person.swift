@@ -13,25 +13,44 @@ class Person {
     var name: String = ""
     var dad: Person?
     var mum: Person?
-    var relationship = [Person]()
+//    var relationship = [Person]()
     var spouse: Person?
     var children = [Person]()
     
-    init(name: String){
+    init(name: String)
+    {
         self.name = name
         
     }
     
     func setDad(dad: Person)
     {
+        // used for singlular instance of parent
         self.dad = dad
         dad.addChild(self)
     }
     
     func setMum(mum: Person)
     {
-        self.mum! = mum
+        // used for singlular instance of parent
+        self.mum = mum
         mum.addChild(self)
+    }
+    
+    func setParents(dad: Person, mum:Person)
+    {
+        // used for adding both parents
+        self.dad = dad
+        self.mum = mum
+        dad.addChild(self)
+        mum.addChild(self)
+        mum.setSpouse(dad)
+    }
+    
+    func setSpouse(spouse: Person)
+    {
+        self.spouse = spouse
+        spouse.spouse = self
     }
     
     func addChild(child: Person)
@@ -39,15 +58,37 @@ class Person {
         self.children.append(child)
     }
     
-    func setParents(dad: Person, mum:Person)
+    func removeMum()
     {
-        self.dad! = dad
-        self.mum! = mum
-        dad.addChild(self)
-        mum.addChild(self)
-        mum.relationship.append(dad)
-        dad.relationship.append(mum)
+        
+        if self.mum?.spouse != nil {
+            self.mum!.removeSpouse()
+        }
+        self.mum = nil
     }
+    
+    func removeDad()
+    {
+        
+        if self.dad?.spouse != nil {
+            self.dad!.removeSpouse()
+        }
+        self.dad = nil
+    }
+    
+    func removeSpouse()
+    {
+        self.spouse?.spouse = nil
+        self.spouse = nil
+    }
+    
+    func removeParents()
+    {
+        self.removeDad()
+        self.removeMum()
+        self.removeSpouse()
+    }
+    
     
     func getAncestors() -> [Person]
     {
