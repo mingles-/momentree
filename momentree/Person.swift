@@ -99,9 +99,9 @@ class Person: CustomStringConvertible {
     func getAncestors() -> [Person]
     {
         var thisLevel = [Person]()
-        thisLevel.append(self)
-        
         var ancestorList = [Person]()
+        
+        thisLevel.append(self)
         
         while !thisLevel.isEmpty
         {
@@ -110,25 +110,27 @@ class Person: CustomStringConvertible {
             {
                 if (n.dad != nil)
                 {
-                    nextLevel.append(dad!)
+                    nextLevel.append(n.dad!)
                 }
                 if (n.mum != nil)
                 {
-                    nextLevel.append(mum!)
+                    nextLevel.append(n.mum!)
                 }
             }
             ancestorList += thisLevel
             thisLevel = nextLevel
-            print(ancestorList)
+
         }
+        ancestorList.removeFirst()
         return ancestorList
     }
     
     func getDecendants() -> [Person]
     {
         var thisLevel = [Person]()
-        thisLevel.append(self)
         var decendantList = [Person]()
+        
+        thisLevel.append(self)
         
         while !thisLevel.isEmpty
         {
@@ -137,14 +139,14 @@ class Person: CustomStringConvertible {
             {
                 for c in n.children
                 {
-                    print(c.name)
                     nextLevel.append(c)
                 }
             }
             decendantList += thisLevel
             thisLevel = nextLevel
-            print(decendantList)
+           
         }
+        decendantList.removeFirst()
         return decendantList
     }
     
