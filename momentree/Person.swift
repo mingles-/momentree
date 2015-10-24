@@ -96,8 +96,9 @@ class Person: CustomStringConvertible {
     }
     
     
-    func getAncestors() -> [Person]
+    func getAncestors(maxIterations: Int) -> [Person]
     {
+        var iteration = 0
         var thisLevel = [Person]()
         var ancestorList = [Person]()
         
@@ -119,14 +120,22 @@ class Person: CustomStringConvertible {
             }
             ancestorList += thisLevel
             thisLevel = nextLevel
+            
+            if iteration == maxIterations
+            {
+                break
+            }
+            
+            iteration += 1
 
         }
         ancestorList.removeFirst()
         return ancestorList
     }
     
-    func getDecendants() -> [Person]
+    func getDecendants(maxIterations: Int?) -> [Person]
     {
+        var iteration = 0
         var thisLevel = [Person]()
         var decendantList = [Person]()
         
@@ -134,6 +143,7 @@ class Person: CustomStringConvertible {
         
         while !thisLevel.isEmpty
         {
+            
             var nextLevel = [Person]()
             for n in thisLevel
             {
@@ -144,15 +154,22 @@ class Person: CustomStringConvertible {
             }
             decendantList += thisLevel
             thisLevel = nextLevel
-           
+            
+            if iteration == maxIterations
+            {
+                break
+            }
+            
+            iteration += 1
         }
+        
         decendantList.removeFirst()
         return decendantList
     }
     
     func getRelatives() -> [Person]
     {
-        return self.getDecendants() + self.getDecendants()
+        return self.getAncestors(100) + self.getDecendants(100)
     }
     
     func toJson() -> String
