@@ -51,7 +51,7 @@ class TreeMultipleGenerationTests: XCTestCase {
         var adamIsIn = false
         var hasNobodyElse = true
         
-        let descendants = joan.getDecendants()
+        let descendants = joan.getDecendants(10)
         
         for descendant in descendants {
             if descendant === mingles {
@@ -75,6 +75,40 @@ class TreeMultipleGenerationTests: XCTestCase {
         
     }
     
+    func testDescendantsN() {
+        
+        var minglesIsIn = false
+        var fionaIsIn = false
+        var lesleyIsIn = false
+        var emmaIsIn = false
+        var adamIsIn = false
+        var hasNobodyElse = true
+        
+        // stop after 1 iteration
+        let descendants = joan.getDecendants(1)
+        print(descendants)
+        for descendant in descendants {
+            if descendant === mingles {
+                minglesIsIn = true
+            } else if descendant === fiona {
+                fionaIsIn = true
+            } else if descendant === adam {
+                adamIsIn = true
+            } else if descendant === emma {
+                emmaIsIn = true
+            } else if descendant === lesley {
+                lesleyIsIn = true
+            } else {
+                hasNobodyElse = false
+            }
+        }
+        
+        let correctDescendants = !minglesIsIn && !fionaIsIn && lesleyIsIn && emmaIsIn && !adamIsIn && hasNobodyElse
+        
+        XCTAssertTrue(correctDescendants)
+        
+    }
+    
     func testAncestors() {
         
         var lesleyIsIn = false
@@ -86,7 +120,7 @@ class TreeMultipleGenerationTests: XCTestCase {
         var louisIsIn = false
         var hasNobodyElse = true
         
-        let ancestors = mingles.getAncestors()
+        let ancestors = mingles.getAncestors(10)
         for ancestor in ancestors {
             if ancestor === lesley {
                 lesleyIsIn = true
@@ -112,5 +146,46 @@ class TreeMultipleGenerationTests: XCTestCase {
         XCTAssertTrue(correctAncestors)
         
     }
+    
+    
+    func testAncestorsN() {
+        
+        var lesleyIsIn = false
+        var stuartIsIn = false
+        var francisIsIn = false
+        var cathyIsIn = false
+        var joanIsIn = false
+        var rabIsIn = false
+        var louisIsIn = false
+        var hasNobodyElse = true
+        
+        let ancestors = mingles.getAncestors(1)
+        print(ancestors)
+        for ancestor in ancestors {
+            if ancestor === lesley {
+                lesleyIsIn = true
+            } else if ancestor === stuart {
+                stuartIsIn = true
+            } else if ancestor === francis {
+                francisIsIn = true
+            } else if ancestor === cathy {
+                cathyIsIn = true
+            } else if ancestor === joan {
+                joanIsIn = true
+            } else if ancestor === rab {
+                rabIsIn = true
+            } else if ancestor === louis {
+                louisIsIn = true
+            } else {
+                hasNobodyElse = false
+            }
+        }
+        
+        let correctAncestors = lesleyIsIn && stuartIsIn && !francisIsIn && !cathyIsIn && !joanIsIn && !rabIsIn && !louisIsIn && hasNobodyElse
+        
+        XCTAssertTrue(correctAncestors)
+        
+    }
+    
 
 }
