@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		062B3EF11BD5627B00ADFC9C /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B3EF01BD5627B00ADFC9C /* PersonView.swift */; settings = {ASSET_TAGS = (); }; };
+		063A95891BD8409B00D7006D /* TreeMultipleGenerationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063A95881BD8409B00D7006D /* TreeMultipleGenerationTests.swift */; settings = {ASSET_TAGS = (); }; };
 		063FE1C71BBC67BA003AA01F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FE1C61BBC67BA003AA01F /* Person.swift */; settings = {ASSET_TAGS = (); }; };
 		06D718DE1BB0544800657ADF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718DD1BB0544800657ADF /* AppDelegate.swift */; };
 		06D718E01BB0544800657ADF /* MinglesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718DF1BB0544800657ADF /* MinglesController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		062B3EF01BD5627B00ADFC9C /* PersonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
+		063A95881BD8409B00D7006D /* TreeMultipleGenerationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeMultipleGenerationTests.swift; sourceTree = "<group>"; };
 		063FE1C61BBC67BA003AA01F /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		06D718DA1BB0544800657ADF /* momentree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = momentree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06D718DD1BB0544800657ADF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				06D718F21BB0544800657ADF /* TreeGenerationOneTests.swift */,
+				063A95881BD8409B00D7006D /* TreeMultipleGenerationTests.swift */,
 				06D718F41BB0544800657ADF /* Info.plist */,
 			);
 			path = momentreeTests;
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06D718F31BB0544800657ADF /* TreeGenerationOneTests.swift in Sources */,
+				063A95891BD8409B00D7006D /* TreeMultipleGenerationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

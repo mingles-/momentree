@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Person {
+class Person: CustomStringConvertible {
     
     var name: String = ""
     var dad: Person?
@@ -16,6 +16,12 @@ class Person {
 //    var relationship = [Person]()
     var spouse: Person?
     var children = [Person]()
+    
+    var description: String {
+        let string = name
+        return string
+    }
+    
     
     init(name: String)
     {
@@ -37,7 +43,7 @@ class Person {
         mum.addChild(self)
     }
     
-    func setParents(dad: Person, mum:Person)
+    func setParents(dad:Person, mum:Person)
     {
         // used for adding both parents
         self.dad = dad
@@ -113,6 +119,7 @@ class Person {
             }
             ancestorList += thisLevel
             thisLevel = nextLevel
+            print(ancestorList)
         }
         return ancestorList
     }
@@ -130,11 +137,13 @@ class Person {
             {
                 for c in n.children
                 {
+                    print(c.name)
                     nextLevel.append(c)
                 }
             }
             decendantList += thisLevel
             thisLevel = nextLevel
+            print(decendantList)
         }
         return decendantList
     }
