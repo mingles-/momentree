@@ -51,7 +51,7 @@ class TreeMultipleGenerationTests: XCTestCase {
         var adamIsIn = false
         var hasNobodyElse = true
         
-        let descendants = joan.getDecendants(10)
+        let (descendants, _) = joan.getDecendants(10)
         
         for descendant in descendants {
             if descendant === mingles {
@@ -85,8 +85,8 @@ class TreeMultipleGenerationTests: XCTestCase {
         var hasNobodyElse = true
         
         // stop after 1 iteration
-        let descendants = joan.getDecendants(1)
-        print(descendants)
+        let (descendants, _) = joan.getDecendants(1)
+
         for descendant in descendants {
             if descendant === mingles {
                 minglesIsIn = true
@@ -120,7 +120,7 @@ class TreeMultipleGenerationTests: XCTestCase {
         var louisIsIn = false
         var hasNobodyElse = true
         
-        let ancestors = mingles.getAncestors(10)
+        let (ancestors, _) = mingles.getAncestors(10)
         for ancestor in ancestors {
             if ancestor === lesley {
                 lesleyIsIn = true
@@ -147,7 +147,6 @@ class TreeMultipleGenerationTests: XCTestCase {
         
     }
     
-    
     func testAncestorsN() {
         
         var lesleyIsIn = false
@@ -159,8 +158,7 @@ class TreeMultipleGenerationTests: XCTestCase {
         var louisIsIn = false
         var hasNobodyElse = true
         
-        let ancestors = mingles.getAncestors(1)
-        print(ancestors)
+        let (ancestors, _) = mingles.getAncestors(1)
         for ancestor in ancestors {
             if ancestor === lesley {
                 lesleyIsIn = true

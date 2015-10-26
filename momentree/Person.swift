@@ -96,10 +96,12 @@ class Person: CustomStringConvertible {
     }
     
     
-    func getAncestors(maxIterations: Int) -> [Person]
+    func getAncestors(maxIterations: Int) -> ([Person], [(Int,[Person])])
     {
         var iteration = 0
         var thisLevel = [Person]()
+        
+        var ancestorListWithGeneration = [(Int,[Person])]()
         var ancestorList = [Person]()
         
         thisLevel.append(self)
@@ -118,6 +120,7 @@ class Person: CustomStringConvertible {
                     nextLevel.append(n.mum!)
                 }
             }
+            ancestorListWithGeneration.append((iteration, thisLevel))
             ancestorList += thisLevel
             thisLevel = nextLevel
             
@@ -130,13 +133,16 @@ class Person: CustomStringConvertible {
 
         }
         ancestorList.removeFirst()
-        return ancestorList
+        ancestorListWithGeneration.removeFirst()
+        return (ancestorList, ancestorListWithGeneration)
     }
     
-    func getDecendants(maxIterations: Int?) -> [Person]
+    func getDecendants(maxIterations: Int) -> ([Person], [(Int,[Person])])
     {
         var iteration = 0
         var thisLevel = [Person]()
+        
+        var decendantListWithGeneration = [(Int,[Person])]()
         var decendantList = [Person]()
         
         thisLevel.append(self)
@@ -152,6 +158,7 @@ class Person: CustomStringConvertible {
                     nextLevel.append(c)
                 }
             }
+            decendantListWithGeneration.append((iteration, thisLevel))
             decendantList += thisLevel
             thisLevel = nextLevel
             
@@ -162,19 +169,14 @@ class Person: CustomStringConvertible {
             
             iteration += 1
         }
-        
+        decendantListWithGeneration.removeFirst()
         decendantList.removeFirst()
-        return decendantList
+        return  (decendantList, decendantListWithGeneration)
     }
     
-    func getRelatives() -> [Person]
-    {
-        return self.getAncestors(100) + self.getDecendants(100)
-    }
-    
-    func toJson() -> String
-    {
-        return "123"
-    }
+//    func getRelatives() -> [Person]
+//    {
+//        return self.getAncestors(100) + self.getDecendants(100)
+//    }
     
 }
