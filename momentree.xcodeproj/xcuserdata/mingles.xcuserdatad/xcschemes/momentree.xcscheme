@@ -37,6 +37,17 @@
                BlueprintName = "momentreeTests"
                ReferencedContainer = "container:momentree.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "TreeMultipleGenerationTests/testAncestorsN()">
+               </Test>
+               <Test
+                  Identifier = "TreeMultipleGenerationTests/testDescendants()">
+               </Test>
+               <Test
+                  Identifier = "TreeMultipleGenerationTests/testDescendantsN()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		062B3EF11BD5627B00ADFC9C /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B3EF01BD5627B00ADFC9C /* PersonView.swift */; settings = {ASSET_TAGS = (); }; };
-		063A95891BD8409B00D7006D /* TreeMultipleGenerationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063A95881BD8409B00D7006D /* TreeMultipleGenerationTests.swift */; settings = {ASSET_TAGS = (); }; };
-		063FE1C71BBC67BA003AA01F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FE1C61BBC67BA003AA01F /* Person.swift */; settings = {ASSET_TAGS = (); }; };
+		062B3EF11BD5627B00ADFC9C /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B3EF01BD5627B00ADFC9C /* PersonView.swift */; };
+		063A95891BD8409B00D7006D /* TreeMultipleGenerationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063A95881BD8409B00D7006D /* TreeMultipleGenerationTests.swift */; };
+		063FE1C71BBC67BA003AA01F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FE1C61BBC67BA003AA01F /* Person.swift */; };
 		06D718DE1BB0544800657ADF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718DD1BB0544800657ADF /* AppDelegate.swift */; };
 		06D718E01BB0544800657ADF /* MinglesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718DF1BB0544800657ADF /* MinglesController.swift */; };
 		06D718E31BB0544800657ADF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06D718E11BB0544800657ADF /* Main.storyboard */; };
@@ -17,6 +17,8 @@
 		06D718E81BB0544800657ADF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06D718E61BB0544800657ADF /* LaunchScreen.storyboard */; };
 		06D718F31BB0544800657ADF /* TreeGenerationOneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718F21BB0544800657ADF /* TreeGenerationOneTests.swift */; };
 		06D718FE1BB0544800657ADF /* momentreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718FD1BB0544800657ADF /* momentreeUITests.swift */; };
+		06DCDED81BDC439C00066AF4 /* FamilyTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCDED71BDC439C00066AF4 /* FamilyTree.swift */; };
+		06DCDEDA1BDDACB000066AF4 /* FamilyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCDED91BDDACB000066AF4 /* FamilyTreeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		06D718F91BB0544800657ADF /* momentreeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = momentreeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06D718FD1BB0544800657ADF /* momentreeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = momentreeUITests.swift; sourceTree = "<group>"; };
 		06D718FF1BB0544800657ADF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06DCDED71BDC439C00066AF4 /* FamilyTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyTree.swift; sourceTree = "<group>"; };
+		06DCDED91BDDACB000066AF4 /* FamilyTreeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyTreeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 				063FE1C51BBC6730003AA01F /* Supporting FIles */,
 				06D718DF1BB0544800657ADF /* MinglesController.swift */,
 				063FE1C61BBC67BA003AA01F /* Person.swift */,
+				06DCDED71BDC439C00066AF4 /* FamilyTree.swift */,
 				062B3EF01BD5627B00ADFC9C /* PersonView.swift */,
 				06D718E11BB0544800657ADF /* Main.storyboard */,
 			);
@@ -127,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				06D718F21BB0544800657ADF /* TreeGenerationOneTests.swift */,
+				06DCDED91BDDACB000066AF4 /* FamilyTreeTests.swift */,
 				063A95881BD8409B00D7006D /* TreeMultipleGenerationTests.swift */,
 				06D718F41BB0544800657ADF /* Info.plist */,
 			);
@@ -273,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				063FE1C71BBC67BA003AA01F /* Person.swift in Sources */,
+				06DCDED81BDC439C00066AF4 /* FamilyTree.swift in Sources */,
 				062B3EF11BD5627B00ADFC9C /* PersonView.swift in Sources */,
 				06D718E01BB0544800657ADF /* MinglesController.swift in Sources */,
 				06D718DE1BB0544800657ADF /* AppDelegate.swift in Sources */,
@@ -285,6 +292,7 @@
 			files = (
 				06D718F31BB0544800657ADF /* TreeGenerationOneTests.swift in Sources */,
 				063A95891BD8409B00D7006D /* TreeMultipleGenerationTests.swift in Sources */,
+				06DCDEDA1BDDACB000066AF4 /* FamilyTreeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
