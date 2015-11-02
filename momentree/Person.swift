@@ -5,7 +5,7 @@
 //  Created by Michael Inglis on 30/09/2015.
 //  Copyright © 2015 Michael Inglis. All rights reserved.
 //
-
+import SwiftyJSON
 import Foundation
 
 class Person: CustomStringConvertible {
@@ -169,14 +169,83 @@ class Person: CustomStringConvertible {
             
             iteration += 1
         }
-        decendantListWithGeneration.removeFirst()
+//        decendantListWithGeneration.removeFirst()
         decendantList.removeFirst()
         return  (decendantList, decendantListWithGeneration)
     }
     
-//    func getRelatives() -> [Person]
-//    {
-//        return self.getAncestors(100) + self.getDecendants(100)
-//    }
+    
+    
+    
+    func getDict(maxIterations: Int) //-> JSON
+    {
+        var decendentLayers = self.getDecendants(maxIterations).1
+        
+        // get base value
+        var childrenDictionaries: [[String:AnyObject]] = []
+        
+        let baseLayer = decendentLayers.last!.1
+        var adultDicts: [[String:AnyObject]] = []
+        for b in baseLayer {
+           let child = b
+            childrenDictionaries.append(self.dictionaryfy(child))
+        }
+        
+        for var i = decendentLayers.count-1; i >= 0; --i {
+            
+            
+            let layer = decendentLayers[i]
+            for person in layer.1 {
+                // if person's child is in the array, dictfy it
+                
+                var currentPersonChildDicts: [[String:AnyObject]] = []
+    
+                for c in person.children {
+                    for c2 in childrenDictionaries {
+                        let dictString = c2["name"] as! String
+                        if c.name == dictString {
+                            
+                            currentPersonChildDicts.append(c2)
+                            
+                        }
+                    }
+                }
+                
+                adultDicts.append(self.dictionaryfyChildren(person, childDict: currentPersonChildDicts))
+
+            }
+            childrenDictionaries = adultDicts
+        }
+        
+        print(JSON(adultDicts))
+        
+    }
+
+    
+    
+    func dictionaryfy(person: Person) -> [String:AnyObject]
+    {
+        var json = [String:AnyObject]()
+        if let spouse = person.spouse?.name {
+            json = ["name":person.name, "spouse":spouse, "children": []]
+        } else {
+            json = ["name":person.name, "children": []]
+        }
+        
+        return json
+    }
+    
+    func dictionaryfyChildren(person: Person, childDict: [[String:AnyObject]]) -> [String:AnyObject]
+    {
+        var json = [String:AnyObject]()
+        
+        if let spouse = person.spouse?.name {
+            json = ["name":person.name, "spouse":spouse, "children": childDict]
+        } else {
+            json = ["name":person.name, "children": childDict]
+        }
+        
+        return json
+    }
     
 }
