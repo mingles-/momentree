@@ -177,48 +177,46 @@ class Person: CustomStringConvertible {
     
     
     
-    func getDict(maxIterations: Int) //-> JSON
+    func getDict(maxIterations: Int) -> [String:AnyObject]
     {
+        // get descendent list in generations
         var decendentLayers = self.getDecendants(maxIterations).1
-        
-        // get base value
+
+        // get children at highest layer
         var childrenDictionaries: [[String:AnyObject]] = []
-        
         let baseLayer = decendentLayers.last!.1
         var adultDicts: [[String:AnyObject]] = []
-        for b in baseLayer {
+        
+        for b in baseLayer
+        {
            let child = b
             childrenDictionaries.append(self.dictionaryfy(child))
         }
+
+        // iterate down layers appending the previous layer to correct children key
         
-        for var i = decendentLayers.count-1; i >= 0; --i {
-            
-            
-            let layer = decendentLayers[i]
-            for person in layer.1 {
-                // if person's child is in the array, dictfy it
-                
+        for var i = decendentLayers.count-1; i >= 0; --i
+        {
+            adultDicts = []
+            for person in decendentLayers[i].1
+            {
                 var currentPersonChildDicts: [[String:AnyObject]] = []
-    
-                for c in person.children {
-                    for c2 in childrenDictionaries {
-                        let dictString = c2["name"] as! String
-                        if c.name == dictString {
-                            
-                            currentPersonChildDicts.append(c2)
-                            
+                for child1 in person.children {
+                    for child2 in childrenDictionaries
+                    {
+                        if child1.name == child2["name"] as! String
+                        {
+                            currentPersonChildDicts.append(child2)
                         }
                     }
                 }
-                
                 adultDicts.append(self.dictionaryfyChildren(person, childDict: currentPersonChildDicts))
-
             }
             childrenDictionaries = adultDicts
         }
         
-        print(JSON(adultDicts))
-        
+//        print(JSON(adultDicts))
+        return(adultDicts.first)!
     }
 
     

@@ -52,14 +52,14 @@ class PersonJsonTests: XCTestCase {
     }
     
     func testJsonSpouse() {
-        let json  = stuart.dictionaryfy(stuart)
+        let json  = stuart.getDict(10)
         
         let minglesjson = ["name":"mingles", "children":[]]
         let fionajson = ["name":"fiona", "children":[]]
         let children = [minglesjson, fionajson]
         let stujson: [String: AnyObject] = ["name":"stuart", "spouse":"lesley", "children":children]
 
-        XCTAssertEqual(JSON(json), JSON(stujson))
+        XCTAssertTrue(NSDictionary(dictionary: json).isEqualToDictionary(stujson))
     }
 
 }
