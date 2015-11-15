@@ -48,7 +48,8 @@ class PersonJsonTests: XCTestCase {
         let json = mingles.dictionaryfy(mingles)
         let test:[String:AnyObject] = ["name":"mingles", "children":[]]
         XCTAssertEqual(JSON(json), JSON(test))
-        joan.getDict(10)
+        print(joan.getDict(10))
+        
     }
     
     func testJsonSpouse() {
@@ -60,6 +61,13 @@ class PersonJsonTests: XCTestCase {
         let stujson: [String: AnyObject] = ["name":"stuart", "spouse":"lesley", "children":children]
 
         XCTAssertTrue(NSDictionary(dictionary: json).isEqualToDictionary(stujson))
+    }
+    
+    func testJsonSingleAncestor() {
+        let json = mingles.dictionaryfy(mingles)
+        let test:[String:AnyObject] = ["name":"mingles", "children":[]]
+        XCTAssertEqual(JSON(json), JSON(test))
+        joan.getDict(10)
     }
 
 }

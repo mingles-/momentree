@@ -214,8 +214,6 @@ class Person: CustomStringConvertible {
             }
             childrenDictionaries = adultDicts
         }
-        
-//        print(JSON(adultDicts))
         return(adultDicts.first)!
     }
 
