@@ -9,8 +9,11 @@
 import UIKit
 import SwiftyJSON
 
-class MinglesController: UIViewController {
+class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet var table: UITableView!
+    
     var fiona = Person(name: "fiona")
     var mingles = Person(name:"mingles")
     var stuart = Person(name:"stuart")
@@ -29,7 +32,7 @@ class MinglesController: UIViewController {
     
     var louis = Person(name: "louis")
     
-    
+    var personArray = [Person]()
     
     
     
@@ -37,7 +40,6 @@ class MinglesController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        print("loaded")
         mingles.setParents(stuart, mum: lesley)
         fiona.setParents(stuart, mum: lesley)
         adam.setParents(alex, mum: emma)
@@ -46,16 +48,46 @@ class MinglesController: UIViewController {
         stuart.setParents(francis, mum: cathy)
         francis.setDad(louis)
         
+        personArray = [fiona, mingles, stuart, lesley, adam, emma, alex, francis, cathy, joan, rab, louis]
         
+
         print(joan.getDict(10))
         
-        test.lineBreakMode = .ByWordWrapping // or NSLineBreakMode.ByWordWrapping
-        test.numberOfLines = 0
+        print("pressed")
         
-        test.text = JSON(joan.getDict(10)).description
+        self.table.delegate = self
+        self.table.dataSource = self
+        
+        let url = NSMutableURLRequest(URL: NSBundle.mainBundle().URLForResource("index", withExtension:"html")!)
+        
+        webView.loadRequest(url)
+        
+//        dispatch_async(dispatch_get_main_queue(), {
+//            self.table!.reloadData()
+//        })
+        
+        
+        
         
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(personArray.count)
+        return personArray.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = self.table.dequeueReusableCellWithIdentifier("personCell") as! PersonCell
+        cell.create((personArray[indexPath.row]).name)
+        print((personArray[indexPath.row]).name)
+        return cell
+    }
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
     
 
     override func didReceiveMemoryWarning() {
@@ -63,20 +95,7 @@ class MinglesController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBOutlet weak var webView: UIWebView!
-    @IBOutlet var test: UILabel!
     
-    @IBAction func loadurlAction(sender: AnyObject) {
-        print("pressed")
-        
-        
-        let url = NSMutableURLRequest(URL: NSBundle.mainBundle().URLForResource("index", withExtension:"html")!)
-        
-        webView.loadRequest(url)
-
-        
-    }
-
 
 }
 
