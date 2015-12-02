@@ -23,6 +23,7 @@
 		06DCDED81BDC439C00066AF4 /* FamilyTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCDED71BDC439C00066AF4 /* FamilyTree.swift */; };
 		06DCDEDA1BDDACB000066AF4 /* FamilyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCDED91BDDACB000066AF4 /* FamilyTreeTests.swift */; };
 		06DCDEDC1BE6B0EC00066AF4 /* PersonJsonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DCDEDB1BE6B0EC00066AF4 /* PersonJsonTests.swift */; };
+		06FDF8741C0D20FB005C4D2A /* testfile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 06FDF8731C0D20FB005C4D2A /* testfile.txt */; };
 		11FD8A02ADD3F5F0D3A7570B /* Pods_momentree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9753E6E8A6140979E796A676 /* Pods_momentree.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		06DCDED71BDC439C00066AF4 /* FamilyTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyTree.swift; sourceTree = "<group>"; };
 		06DCDED91BDDACB000066AF4 /* FamilyTreeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyTreeTests.swift; sourceTree = "<group>"; };
 		06DCDEDB1BE6B0EC00066AF4 /* PersonJsonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonJsonTests.swift; sourceTree = "<group>"; };
+		06FDF8731C0D20FB005C4D2A /* testfile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testfile.txt; sourceTree = "<group>"; };
 		3D57EE10EAF5219321DB8BC8 /* Pods-momentree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momentree.release.xcconfig"; path = "Pods/Target Support Files/Pods-momentree/Pods-momentree.release.xcconfig"; sourceTree = "<group>"; };
 		9753E6E8A6140979E796A676 /* Pods_momentree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_momentree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA69115ECB7FED4BE9963C4D /* Pods-momentree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momentree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-momentree/Pods-momentree.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				063FE1C51BBC6730003AA01F /* Supporting FIles */,
 				06D718DF1BB0544800657ADF /* MinglesController.swift */,
 				063FE1C61BBC67BA003AA01F /* Person.swift */,
+				06FDF8731C0D20FB005C4D2A /* testfile.txt */,
 				06DCDED71BDC439C00066AF4 /* FamilyTree.swift */,
 				062B3EF01BD5627B00ADFC9C /* PersonView.swift */,
 				064AE9F91BF6C52A0032C657 /* treeData.json */,
@@ -290,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06FDF8741C0D20FB005C4D2A /* testfile.txt in Resources */,
 				064AE9FA1BF6C52A0032C657 /* treeData.json in Resources */,
 				06D718E81BB0544800657ADF /* LaunchScreen.storyboard in Resources */,
 				064AE9F81BF6C2BC0032C657 /* index.html in Resources */,

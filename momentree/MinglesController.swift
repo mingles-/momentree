@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet var table: UITableView!
@@ -49,12 +49,7 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
         francis.setDad(louis)
         
         personArray = [fiona, mingles, stuart, lesley, adam, emma, alex, francis, cathy, joan, rab, louis]
-        
-
-        print(joan.getDict(10))
-        
-        print("pressed")
-        
+                
         self.table.delegate = self
         self.table.dataSource = self
         
@@ -62,14 +57,38 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         webView.loadRequest(url)
         
-//        dispatch_async(dispatch_get_main_queue(), {
+        //        dispatch_async(dispatch_get_main_queue(), {
 //            self.table!.reloadData()
 //        })
         
         
         
+    }
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        print("start0")
+        return true
+    }
+    
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        print("started didFinish")
+        let jsonInput = JSON([["name":"mingles2", "children":[]]]).rawString()
+        var textToInput = "" + jsonInput! + ""
+        
+        textToInput = textToInput.stringByReplacingOccurrencesOfString("\n", withString: "")
+        textToInput = textToInput.stringByReplacingOccurrencesOfString(" ", withString: "")
+        // REMOVE / AND Ns
+        print(textToInput)
+        let script = String(format:"document.getElementById('demo').title='%@'", textToInput)
+        let script2 = String("foo(true);")
+        
+        webView.stringByEvaluatingJavaScriptFromString(script)
+        
+        webView.stringByEvaluatingJavaScriptFromString(script2)
         
     }
+    
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(personArray.count)

@@ -214,9 +214,11 @@ class Person: CustomStringConvertible {
             }
             childrenDictionaries = adultDicts
         }
+        
         return(adultDicts.first)!
     }
 
+    
     
     
     func dictionaryfy(person: Person) -> [String:AnyObject]
