@@ -22,8 +22,12 @@ class FamilyBuilderController: UIViewController {
     
     @IBAction func addPersonButton(sender: AnyObject) {
         print(nameTextField.text!)
-        let obj = Person(name: nameTextField.text!)
+        if nameTextField.text! != "" {
+            let obj = Person(name: nameTextField.text!)
+            personArray.append(obj)
+            print(personArray)
+        }
         
     }
-  
+    
 }
