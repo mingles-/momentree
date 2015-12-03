@@ -13,6 +13,7 @@
 		064AE9F81BF6C2BC0032C657 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 064AE9F71BF6C2BC0032C657 /* index.html */; };
 		064AE9FA1BF6C52A0032C657 /* treeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 064AE9F91BF6C52A0032C657 /* treeData.json */; };
 		064AE9FC1BF944270032C657 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064AE9FB1BF944270032C657 /* PersonCell.swift */; };
+		06BC52B11C10B59D00CF14CE /* FamilyBuilderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BC52B01C10B59D00CF14CE /* FamilyBuilderController.swift */; };
 		06D718DE1BB0544800657ADF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718DD1BB0544800657ADF /* AppDelegate.swift */; };
 		06D718E01BB0544800657ADF /* MinglesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718DF1BB0544800657ADF /* MinglesController.swift */; };
 		06D718E31BB0544800657ADF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06D718E11BB0544800657ADF /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		064AE9F71BF6C2BC0032C657 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = index.html; path = ../../../../../Downloads/UIWebView_attachments/index.html; sourceTree = "<group>"; };
 		064AE9F91BF6C52A0032C657 /* treeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = treeData.json; path = "../../../../UI TEST/treeData.json"; sourceTree = "<group>"; };
 		064AE9FB1BF944270032C657 /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
+		06BC52B01C10B59D00CF14CE /* FamilyBuilderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyBuilderController.swift; sourceTree = "<group>"; };
 		06D718DA1BB0544800657ADF /* momentree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = momentree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06D718DD1BB0544800657ADF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06D718DF1BB0544800657ADF /* MinglesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinglesController.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				063FE1C51BBC6730003AA01F /* Supporting FIles */,
 				06D718DF1BB0544800657ADF /* MinglesController.swift */,
+				06BC52B01C10B59D00CF14CE /* FamilyBuilderController.swift */,
 				063FE1C61BBC67BA003AA01F /* Person.swift */,
 				06FDF8731C0D20FB005C4D2A /* testfile.txt */,
 				06DCDED71BDC439C00066AF4 /* FamilyTree.swift */,
@@ -371,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06BC52B11C10B59D00CF14CE /* FamilyBuilderController.swift in Sources */,
 				064AE9FC1BF944270032C657 /* PersonCell.swift in Sources */,
 				063FE1C71BBC67BA003AA01F /* Person.swift in Sources */,
 				06DCDED81BDC439C00066AF4 /* FamilyTree.swift in Sources */,

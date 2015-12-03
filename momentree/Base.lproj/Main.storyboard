@@ -6,6 +6,63 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Family Builder Controller-->
+        <scene sceneID="8fO-jo-1Gh">
+            <objects>
+                <viewController id="DkW-rG-old" customClass="FamilyBuilderController" customModule="momentree" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1QG-1V-htd"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Cm-HK-Up0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8eF-Uu-WcS">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5d-B9-tCo">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="264" y="183" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="y2c-1U-jRb" kind="show" id="dWB-fT-yzD"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dsT-6L-e7k">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="91" y="183" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="j5d-B9-tCo"/>
+                                <exclude reference="dsT-6L-e7k"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="j5d-B9-tCo"/>
+                                <include reference="dsT-6L-e7k"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="addPersonFamilyBuilderButton" destination="j5d-B9-tCo" id="k3O-iC-xCV"/>
+                        <outlet property="nameTextField" destination="dsT-6L-e7k" id="bKe-KH-w0O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OrX-44-Mkv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1860" y="-335"/>
+        </scene>
         <!--Table View Controller-->
         <scene sceneID="j18-L1-thN">
             <objects>
@@ -107,10 +164,10 @@
             </objects>
             <point key="canvasLocation" x="762" y="658"/>
         </scene>
-        <!--Tree Controller-->
+        <!--Family View-->
         <scene sceneID="nal-Ft-cZJ">
             <objects>
-                <viewController title="Tree Controller" id="y2c-1U-jRb" customClass="MinglesController" customModule="momentree" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Family View" id="y2c-1U-jRb" customClass="MinglesController" customModule="momentree" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Fo-8R-O7S"/>
                         <viewControllerLayoutGuide type="bottom" id="Hdh-MV-wBY"/>
@@ -208,9 +265,16 @@
                             <constraint firstItem="iRW-zA-dD5" firstAttribute="top" secondItem="96U-mk-9DX" secondAttribute="topMargin" constant="64" id="yJy-ee-VZa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="WIL-lO-E70"/>
+                    <navigationItem key="navigationItem" id="WIL-lO-E70">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="add" id="l4o-P4-aBG" userLabel="addPerson">
+                            <connections>
+                                <segue destination="DkW-rG-old" kind="show" id="hIC-M0-xYe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="addPersonButton" destination="l4o-P4-aBG" id="KE6-lb-Jd9"/>
                         <outlet property="table" destination="iRW-zA-dD5" id="AI3-8H-Vpv"/>
                         <outlet property="webView" destination="39S-Xv-0At" id="caD-Do-IOC"/>
                     </connections>
@@ -258,4 +322,7 @@
             <point key="canvasLocation" x="30" y="-335"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dWB-fT-yzD"/>
+    </inferredMetricsTieBreakers>
 </document>

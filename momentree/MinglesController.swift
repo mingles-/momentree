@@ -13,6 +13,7 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
 
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet var table: UITableView!
+    @IBOutlet weak var addPersonButton: UIBarButtonItem!
     
     var fiona = Person(name: "fiona")
     var mingles = Person(name:"mingles")
@@ -34,12 +35,17 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     var personArray = [Person]()
     
+    var selectedPerson = Person(name: "")
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
 
+        // set inital person
+        selectedPerson = joan
+        
+        // set up relationships
         mingles.setParents(stuart, mum: lesley)
         fiona.setParents(stuart, mum: lesley)
         adam.setParents(alex, mum: emma)
@@ -53,6 +59,7 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
         self.table.delegate = self
         self.table.dataSource = self
         
+        
         let url = NSMutableURLRequest(URL: NSBundle.mainBundle().URLForResource("index", withExtension:"html")!)
         
         webView.loadRequest(url)
@@ -64,29 +71,25 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         
     }
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        print("start0")
-        return true
-    }
-    
     
     func webViewDidFinishLoad(webView: UIWebView) {
         print("started didFinish")
-        let jsonInput = JSON([["name":"mingles2", "children":[]]]).rawString()
+        let jsonInput = JSON([selectedPerson.getDict(10)]).rawString()
+        
         var textToInput = "" + jsonInput! + ""
         
         textToInput = textToInput.stringByReplacingOccurrencesOfString("\n", withString: "")
         textToInput = textToInput.stringByReplacingOccurrencesOfString(" ", withString: "")
-        // REMOVE / AND Ns
         print(textToInput)
-        let script = String(format:"document.getElementById('demo').title='%@'", textToInput)
-        let script2 = String("foo(true);")
+        let script = String(format:"document.getElementById('json-pass-in').title='%@'", textToInput)
+        let script2 = String("drawGraph(true);")
         
         webView.stringByEvaluatingJavaScriptFromString(script)
         
         webView.stringByEvaluatingJavaScriptFromString(script2)
         
     }
+    
     
     
     
@@ -105,7 +108,8 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        selectedPerson = personArray[indexPath.row]
+        webView.reload()
     }
     
 
