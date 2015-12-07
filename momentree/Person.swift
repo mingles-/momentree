@@ -169,7 +169,6 @@ class Person: CustomStringConvertible {
             
             iteration += 1
         }
-//        decendantListWithGeneration.removeFirst()
         decendantList.removeFirst()
         return  (decendantList, decendantListWithGeneration)
     }
@@ -217,6 +216,73 @@ class Person: CustomStringConvertible {
         
         return(adultDicts.first)!
     }
+    
+    func getAncestorsDict(maxIterations: Int) -> [[String:AnyObject]]
+    {
+        // get descendent list in generations
+        var decendentLayers = self.getAncestors(maxIterations).1
+        // get children at highest layer
+        var childrenDictionaries: [[String:AnyObject]] = []
+//        let baseLayer = decendentLayers.first!.1
+        var adultDicts: [[String:AnyObject]] = []
+        
+        // iterate down layers appending the previous layer to correct children key
+        
+        for var i = decendentLayers.count-1; i >= 0; --i
+        {
+            adultDicts = []
+            for person in decendentLayers[i].1
+            {
+                var currentPersonChildDicts: [[String:AnyObject]] = []
+                
+                if person.dad != nil {
+                    for dad2 in childrenDictionaries {
+                        if person.dad!.name == dad2["name"] as! String {
+                            currentPersonChildDicts.append(dad2)
+                        }
+                    }
+                    
+                }
+                
+                if person.mum != nil {
+                    for mum2 in childrenDictionaries {
+                        if person.mum!.name == mum2["name"] as! String {
+                            currentPersonChildDicts.append(mum2)
+                        }
+                    }
+                }
+                
+                
+                
+                
+                adultDicts.append(self.dictionaryfyAncestor(person, ancDict: currentPersonChildDicts))
+            }
+            
+            childrenDictionaries = adultDicts
+        }
+        return(adultDicts)
+        
+    }
+
+    
+    func fullTree(thePerson: Person) -> [String:AnyObject]
+    {
+        
+        var ancestors = (thePerson.getAncestorsDict(10))
+        var decendants = (thePerson.getDict(10))
+            //decendants["children"] = ancestors
+        
+        if thePerson.name == decendants["name"] as! String {
+            decendants["ancestors"] = ancestors
+            print(JSON(decendants))
+            
+        }
+        
+        
+
+        return decendants
+        
+    }
 
     
     
@@ -224,6 +290,11 @@ class Person: CustomStringConvertible {
     func dictionaryfy(person: Person) -> [String:AnyObject]
     {
         var json = [String:AnyObject]()
+        
+        if person.name == self.name {
+            json = ["name":person.name, "children": [], "ancestors": []]
+        }
+        
         if let spouse = person.spouse?.name {
             json = ["name":person.name, "spouse":spouse, "children": []]
         } else {
@@ -241,6 +312,19 @@ class Person: CustomStringConvertible {
             json = ["name":person.name, "spouse":spouse, "children": childDict]
         } else {
             json = ["name":person.name, "children": childDict]
+        }
+        
+        return json
+    }
+    
+    func dictionaryfyAncestor(person: Person, ancDict: [[String:AnyObject]]) -> [String:AnyObject]
+    {
+        var json = [String:AnyObject]()
+        
+        if let spouse = person.spouse?.name {
+            json = ["name":person.name, "spouse":spouse, "ancestors": ancDict]
+        } else {
+            json = ["name":person.name, "ancestors": ancDict]
         }
         
         return json
