@@ -25,10 +25,9 @@ var cathy = Person(name: "cathy")
 
 var joan = Person(name: "joan")
 var rab = Person(name: "rab")
-
 var louis = Person(name: "louis")
 
-
+var selectedPersonIndex = 0
 
 
 
@@ -37,10 +36,9 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet var table: UITableView!
     @IBOutlet weak var addPersonButton: UIBarButtonItem!
+    @IBOutlet weak var editPersonButton: UIBarButtonItem!
     
     var selectedPerson = Person(name: "")
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,8 +57,8 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
             stuart.setParents(francis, mum: cathy)
             francis.setDad(louis)
         }
-        
-        selectedPerson = personArray[personArray.count-1]
+        selectedPersonIndex = personArray.count-1
+        selectedPerson = personArray[selectedPersonIndex]
                 
         self.table.delegate = self
         self.table.dataSource = self
@@ -69,21 +67,17 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
         let url = NSMutableURLRequest(URL: NSBundle.mainBundle().URLForResource("index", withExtension:"html")!)
         
         webView.loadRequest(url)
-     
-        
         
         
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
-        print("started didFinish")
-        let jsonInput = JSON([selectedPerson.getDict(10)]).rawString()
+        let jsonInput = JSON([selectedPerson.fullTree(selectedPerson)]).rawString()
         
         var textToInput = "" + jsonInput! + ""
         
         textToInput = textToInput.stringByReplacingOccurrencesOfString("\n", withString: "")
         textToInput = textToInput.stringByReplacingOccurrencesOfString(" ", withString: "")
-        print(textToInput)
         let script = String(format:"document.getElementById('json-pass-in').title='%@'", textToInput)
         let script2 = String("drawGraph(true);")
         
@@ -91,13 +85,14 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         webView.stringByEvaluatingJavaScriptFromString(script2)
         
+        //print(mingles.fullTree(0))
+        
     }
     
     
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(personArray.count)
         return personArray.count
     }
     
@@ -105,13 +100,13 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         let cell = self.table.dequeueReusableCellWithIdentifier("personCell") as! PersonCell
         cell.create((personArray[indexPath.row]).name)
-        print((personArray[indexPath.row]).name)
         return cell
     }
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedPerson = personArray[indexPath.row]
+        selectedPersonIndex = indexPath.row
         webView.reload()
     }
     
