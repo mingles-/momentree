@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0621650F1C14DAFD00329494 /* PersonEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621650E1C14DAFD00329494 /* PersonEditorController.swift */; };
 		062B3EF11BD5627B00ADFC9C /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B3EF01BD5627B00ADFC9C /* PersonView.swift */; };
 		063A95891BD8409B00D7006D /* TreeMultipleGenerationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063A95881BD8409B00D7006D /* TreeMultipleGenerationTests.swift */; };
 		063FE1C71BBC67BA003AA01F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FE1C61BBC67BA003AA01F /* Person.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0621650E1C14DAFD00329494 /* PersonEditorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonEditorController.swift; sourceTree = "<group>"; };
 		062B3EF01BD5627B00ADFC9C /* PersonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 		063A95881BD8409B00D7006D /* TreeMultipleGenerationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeMultipleGenerationTests.swift; sourceTree = "<group>"; };
 		063FE1C61BBC67BA003AA01F /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				063FE1C51BBC6730003AA01F /* Supporting FIles */,
 				06D718DF1BB0544800657ADF /* MinglesController.swift */,
+				0621650E1C14DAFD00329494 /* PersonEditorController.swift */,
 				06BC52B01C10B59D00CF14CE /* FamilyBuilderController.swift */,
 				063FE1C61BBC67BA003AA01F /* Person.swift */,
 				06FDF8731C0D20FB005C4D2A /* testfile.txt */,
@@ -260,6 +263,7 @@
 				TargetAttributes = {
 					06D718D91BB0544800657ADF = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 7HS9A56BMZ;
 					};
 					06D718ED1BB0544800657ADF = {
 						CreatedOnToolsVersion = 7.0;
@@ -375,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06BC52B11C10B59D00CF14CE /* FamilyBuilderController.swift in Sources */,
+				0621650F1C14DAFD00329494 /* PersonEditorController.swift in Sources */,
 				064AE9FC1BF944270032C657 /* PersonCell.swift in Sources */,
 				063FE1C71BBC67BA003AA01F /* Person.swift in Sources */,
 				06DCDED81BDC439C00066AF4 /* FamilyTree.swift in Sources */,
@@ -526,10 +531,15 @@
 			baseConfigurationReference = CA69115ECB7FED4BE9963C4D /* Pods-momentree.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = momentree/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mingles.momentree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -538,10 +548,15 @@
 			baseConfigurationReference = 3D57EE10EAF5219321DB8BC8 /* Pods-momentree.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = momentree/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mingles.momentree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
