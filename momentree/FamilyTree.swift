@@ -7,19 +7,40 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class FamilyTree {
     
-    var owner: Person?
-    var description = ""
-    var ancestorHeight = 0
-    var decendantHeight = 0
+    private var owner: Person?
+    private var description = ""
+    private var ancestorHeight = 0
+    private var decendantHeight = 0
+    private var hasSpouse = false
     
-    init(owner: Person, ancestorHeight: Int, descendantHeight: Int) {
+    init(owner: Person, ancestorHeight: Int, descendantHeight: Int, hasSpouse: Bool) {
         self.owner = owner
-        self.description = "\(owner.name)'s Family Tree"
+        self.description = "\(self.owner!.name)'s Family Tree"
         self.ancestorHeight = ancestorHeight
         self.decendantHeight = descendantHeight
+        if self.owner?.spouse != nil {
+            self.hasSpouse = hasSpouse
+        }
+        
+    }
+    
+    // return the decendents based on the descendent height
+    private func getDescendents() -> JSON {
+        return JSON("Hello: test")
+    }
+    
+    // return the ancestors based on the ancestor height
+    private func getAncestors() -> JSON {
+        return JSON("Hello: test")
+    }
+    
+    // return specified JSON of tree
+    func getJSON() -> JSON {
+        return JSON("Hello: test")
     }
     
     
