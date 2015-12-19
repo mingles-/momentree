@@ -26,7 +26,6 @@ class Person: CustomStringConvertible {
     init(name: String)
     {
         self.name = name
-        
     }
     
     func setDad(dad: Person)
@@ -273,8 +272,7 @@ class Person: CustomStringConvertible {
             //decendants["children"] = ancestors
         
         if thePerson.name == decendants["name"] as! String {
-            decendants["ancestors"] = ancestors
-            print(JSON(decendants))
+            decendants["parent"] = ancestors
             
         }
         
@@ -292,7 +290,7 @@ class Person: CustomStringConvertible {
         var json = [String:AnyObject]()
         
         if person.name == self.name {
-            json = ["name":person.name, "children": [], "ancestors": []]
+            json = ["name":person.name, "children": [], "parent": []]
         }
         
         if let spouse = person.spouse?.name {

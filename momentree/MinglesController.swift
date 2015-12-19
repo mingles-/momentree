@@ -26,6 +26,7 @@ var cathy = Person(name: "cathy")
 var joan = Person(name: "joan")
 var rab = Person(name: "rab")
 var louis = Person(name: "louis")
+var theTree = FamilyTree(owner: lesley, ancestorHeight: 10, descendantHeight: 10, hasSpouse: false)
 
 var selectedPersonIndex = 0
 
@@ -68,6 +69,8 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         webView.loadRequest(url)
         
+        print(JSON(theTree.fullTree()))
+        
         
     }
     
@@ -84,8 +87,6 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
         webView.stringByEvaluatingJavaScriptFromString(script)
         
         webView.stringByEvaluatingJavaScriptFromString(script2)
-        
-        //print(mingles.fullTree(0))
         
     }
     
