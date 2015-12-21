@@ -110,9 +110,9 @@ class FamilyTree {
         var json = [String:AnyObject]()
         
         if let spouse = person.spouse?.name {
-            json = ["name":person.name, "spouse":spouse, "_parents": ancDict]
+            json = ["name":person.name, "id":person.name, "spouse":spouse, "_parents": ancDict]
         } else {
-            json = ["name":person.name, "_parents": ancDict]
+            json = ["name":person.name, "id":person.name, "_parents": ancDict]
         }
         
         return json
@@ -166,12 +166,12 @@ class FamilyTree {
         var json = [String:AnyObject]()
         
         if person.name == self.owner!.name {
-            json = ["name":person.name, "_children": [], "_parents": []]
+            json = ["name":person.name, "id":person.name,"_children": [], "_parents": []]
         }
         if let spouse = person.spouse?.name {
-            json = ["name":person.name, "spouse":spouse, "_parents": []]
+            json = ["name":person.name, "id":person.name, "spouse":spouse, "_parents": []]
         } else {
-            json = ["name":person.name, "parent": []]
+            json = ["name":person.name, "id":person.name, "parent": []]
         }
         
         return json
@@ -183,15 +183,14 @@ class FamilyTree {
         var json = [String:AnyObject]()
         
         if let spouse = person.spouse?.name {
-            json = ["name":person.name, "spouse":spouse, "_children": childDict]
+            json = ["name":person.name, "id":person.name, "spouse":spouse, "_children": childDict]
             
         } else if person.children.count != 0 {
             
-            print(person.name + "has children" + String(person.children.count))
-            json = ["name":person.name, "_children": childDict]
+            json = ["name":person.name, "id":person.name, "_children": childDict]
             
         } else {
-            json = ["name":person.name]
+            json = ["name":person.name, "id":person.name,]
         }
         
         return json
