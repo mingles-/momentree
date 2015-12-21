@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FamilyViewController.swift
 //  momentree
 //
 //  Created by Michael Inglis on 21/09/2015.
@@ -26,13 +26,13 @@ var cathy = Person(name: "cathy")
 var joan = Person(name: "joan")
 var rab = Person(name: "rab")
 var louis = Person(name: "louis")
-var theTree = FamilyTree(owner: lesley, ancestorHeight: 10, descendantHeight: 10, hasSpouse: false)
+
 
 var selectedPersonIndex = 0
+var theTree = FamilyTree(owner: personArray[selectedPersonIndex], ancestorHeight: 10, descendantHeight: 10, hasSpouse: false)
 
 
-
-class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
+class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet var table: UITableView!
@@ -60,12 +60,13 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         selectedPersonIndex = personArray.count-1
         selectedPerson = personArray[selectedPersonIndex]
-                
+        
+        
         self.table.delegate = self
         self.table.dataSource = self
         self.table.reloadInputViews()
         
-        let url = NSMutableURLRequest(URL: NSBundle.mainBundle().URLForResource("index", withExtension:"html")!)
+        let url = NSMutableURLRequest(URL: NSBundle.mainBundle().URLForResource("AncestorDescendentView", withExtension:"html")!)
         
         webView.loadRequest(url)
         
@@ -75,7 +76,11 @@ class MinglesController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
-        let jsonInput = JSON([selectedPerson.fullTree(selectedPerson)]).rawString()
+        theTree = FamilyTree(owner: selectedPerson, ancestorHeight: 10, descendantHeight: 10, hasSpouse: false)
+       
+//        let jsonInput = JSON([selectedPerson.fullTree(selectedPerson)]).rawString()
+        let jsonInput = JSON(theTree.fullTree()).rawString()
+
         
         var textToInput = "" + jsonInput! + ""
         
