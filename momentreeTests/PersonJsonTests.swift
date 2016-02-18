@@ -44,30 +44,5 @@ class PersonJsonTests: XCTestCase {
     }
 
 
-    func testJsonSingle() {
-        let json = mingles.dictionaryfy(mingles)
-        let test:[String:AnyObject] = ["name":"mingles", "children":[]]
-        XCTAssertEqual(JSON(json), JSON(test))
-        print(joan.getDict(10))
-        
-    }
-    
-    func testJsonSpouse() {
-        let json  = stuart.getDict(10)
-        
-        let minglesjson = ["name":"mingles", "children":[]]
-        let fionajson = ["name":"fiona", "children":[]]
-        let children = [minglesjson, fionajson]
-        let stujson: [String: AnyObject] = ["name":"stuart", "spouse":"lesley", "children":children]
-
-        XCTAssertTrue(NSDictionary(dictionary: json).isEqualToDictionary(stujson))
-    }
-    
-    func testJsonSingleAncestor() {
-        let json = mingles.dictionaryfy(mingles)
-        let test:[String:AnyObject] = ["name":"mingles", "children":[]]
-        XCTAssertEqual(JSON(json), JSON(test))
-        joan.getDict(10)
-    }
 
 }
