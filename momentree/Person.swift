@@ -172,160 +172,66 @@ class Person: CustomStringConvertible {
         return  (decendantList, decendantListWithGeneration)
     }
     
-    
-    
-    
-    func getDict(maxIterations: Int) -> [String:AnyObject]
+    func getDescendantsHeightCount() -> Int
     {
-        // get descendent list in generations
-        var decendentLayers = self.getDecendants(maxIterations).1
-
-        // get children at highest layer
-        var childrenDictionaries: [[String:AnyObject]] = []
-        let baseLayer = decendentLayers.last!.1
-        var adultDicts: [[String:AnyObject]] = []
+        var iteration = 0
+        var thisLevel = [Person]()
         
-        for b in baseLayer
-        {
-           let child = b
-            childrenDictionaries.append(self.dictionaryfy(child))
-        }
-
-        // iterate down layers appending the previous layer to correct children key
+        var decendantList = [Person]()
         
-        for var i = decendentLayers.count-1; i >= 0; --i
+        thisLevel.append(self)
+        
+        while !thisLevel.isEmpty
         {
-            adultDicts = []
-            for person in decendentLayers[i].1
+            var nextLevel = [Person]()
+            for n in thisLevel
             {
-                var currentPersonChildDicts: [[String:AnyObject]] = []
-                for child1 in person.children {
-                    for child2 in childrenDictionaries
-                    {
-                        if child1.name == child2["name"] as! String
-                        {
-                            currentPersonChildDicts.append(child2)
-                        }
-                    }
+                for c in n.children
+                {
+                    nextLevel.append(c)
                 }
-                adultDicts.append(self.dictionaryfyChildren(person, childDict: currentPersonChildDicts))
             }
-            childrenDictionaries = adultDicts
-        }
-        
-        return(adultDicts.first)!
-    }
-    
-    func getAncestorsDict(maxIterations: Int) -> [[String:AnyObject]]
-    {
-        // get descendent list in generations
-        var decendentLayers = self.getAncestors(maxIterations).1
-        // get children at highest layer
-        var childrenDictionaries: [[String:AnyObject]] = []
-//        let baseLayer = decendentLayers.first!.1
-        var adultDicts: [[String:AnyObject]] = []
-        
-        // iterate down layers appending the previous layer to correct children key
-        
-        for var i = decendentLayers.count-1; i >= 0; --i
-        {
-            adultDicts = []
-            for person in decendentLayers[i].1
-            {
-                var currentPersonChildDicts: [[String:AnyObject]] = []
-                
-                if person.dad != nil {
-                    for dad2 in childrenDictionaries {
-                        if person.dad!.name == dad2["name"] as! String {
-                            currentPersonChildDicts.append(dad2)
-                        }
-                    }
-                    
-                }
-                
-                if person.mum != nil {
-                    for mum2 in childrenDictionaries {
-                        if person.mum!.name == mum2["name"] as! String {
-                            currentPersonChildDicts.append(mum2)
-                        }
-                    }
-                }
-                
-                
-                
-                
-                adultDicts.append(self.dictionaryfyAncestor(person, ancDict: currentPersonChildDicts))
-            }
+            decendantList += thisLevel
+            thisLevel = nextLevel
             
-            childrenDictionaries = adultDicts
+            iteration += 1
         }
-        return(adultDicts)
         
+        return iteration-1
     }
-
     
-    func fullTree(thePerson: Person) -> [String:AnyObject]
+    func getAncestorsHeightCount() -> Int
     {
+        var iteration = 0
+        var thisLevel = [Person]()
         
-        var ancestors = (thePerson.getAncestorsDict(10))
-        var decendants = (thePerson.getDict(10))
-            //decendants["children"] = ancestors
+        var ancestorList = [Person]()
         
-        if thePerson.name == decendants["name"] as! String {
-            decendants["parent"] = ancestors
+        thisLevel.append(self)
+        
+        while !thisLevel.isEmpty
+        {
+            var nextLevel = [Person]()
+            for n in thisLevel
+            {
+                if (n.dad != nil)
+                {
+                    nextLevel.append(n.dad!)
+                }
+                if (n.mum != nil)
+                {
+                    nextLevel.append(n.mum!)
+                }
+            }
+            ancestorList += thisLevel
+            thisLevel = nextLevel
+            
+            iteration += 1
             
         }
-        
-        
-
-        return decendants
-        
+        return iteration - 1
     }
 
     
-    
-    
-    func dictionaryfy(person: Person) -> [String:AnyObject]
-    {
-        var json = [String:AnyObject]()
-        
-        if person.name == self.name {
-            json = ["name":person.name, "children": [], "parent": []]
-        }
-        
-        if let spouse = person.spouse?.name {
-            json = ["name":person.name, "spouse":spouse, "children": []]
-        } else {
-            json = ["name":person.name, "children": []]
-        }
-        
-        return json
-    }
-    
-    func dictionaryfyChildren(person: Person, childDict: [[String:AnyObject]]) -> [String:AnyObject]
-    {
-        var json = [String:AnyObject]()
-        
-        if let spouse = person.spouse?.name {
-            json = ["name":person.name, "spouse":spouse, "children": childDict]
-        } else {
-            json = ["name":person.name, "children": childDict]
-        }
-        
-        return json
-    }
-    
-    func dictionaryfyAncestor(person: Person, ancDict: [[String:AnyObject]]) -> [String:AnyObject]
-    {
-        var json = [String:AnyObject]()
-        
-        if let spouse = person.spouse?.name {
-            json = ["name":person.name, "spouse":spouse, "ancestors": ancDict]
-        } else {
-            json = ["name":person.name, "ancestors": ancDict]
-        }
-        
-        return json
-    }
     
 }
