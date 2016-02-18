@@ -5,11 +5,11 @@
             text-align: center;
         }
     svg {
-        margin-top: 32px;
-        border: 1px solid #aaa;
+        margin-top: 0px;
+        border: 0px solid #aaa;
     }
     .person rect {
-        fill: #fff;
+        fill: #c2dcf5;
         stroke: steelblue;
         stroke-width: 1px;
     }
@@ -19,28 +19,28 @@
     }
     .link {
         fill: none;
-        stroke: #ccc;
+        stroke: #fe9695;
         stroke-width: 1.5px;
     }
     </style>
-    <body>
+    <body bgcolor="#d7ffc0">
         
         <h1 id="json-pass-in" title=""></h1>
 
         <script src="d3.min.js"></script>
         <script>
             
-            var boxWidth = 150,
-            boxHeight = 40,
-            nodeWidth = 100,
-            nodeHeight = 200,
+            var boxWidth = 100,
+            boxHeight = 100,
+            nodeWidth = 130,
+            nodeHeight = 130,
             
             // duration of transitions in ms
-            duration = 750,
+            duration = 500,
             
             // d3 multiplies the node size by this value
             // to calculate the distance between nodes
-            separation = .5;
+            separation = 1;
             /**
              * For the sake of the examples, I want the setup code to be at the top.
              * However, since it uses a class (Tree) which is defined later, I wrap
@@ -51,26 +51,33 @@
         function setup() {
             // Setup zoom and pan
             var zoom = d3.behavior.zoom()
+            
             .scaleExtent([.1,1])
             .on('zoom', function(){
                 svg.attr("transform", "translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")");
                 })
                 // Offset so that first pan and zoom does not jump back to the origin
-                .translate([400, 200]);
+                .translate([350, 350]);
+                
+                var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+                var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+                var margin = {top: 0, right: 0, bottom: 0, left: 0},
+                width = w - margin.right - margin.left,
+                height = h - margin.top - margin.bottom;
                 
                 var svg = d3.select("body").append("svg")
-                .attr('width', 1000)
-                .attr('height', 500)
+                .attr('width', width)
+                .attr('height', height)
                 .call(zoom)
                 .append('g')
                 
                 // Left padding of tree so that the whole root node is on the screen.
                 // TODO: find a better way
-                .attr("transform", "translate(400,200)");
+                .attr("transform", "translate(350, 350)");
                 
                 
                 // One tree to display the ancestors
-                var ancestorTree = new Tree(svg, 'ancestor', 1);
+                var ancestorTree = new Tree(svg, 'ancestor', -1);
                 ancestorTree.children(function(person){
                   // If the person is collapsed then tell d3
                   // that they don't have any ancestors.
@@ -82,7 +89,7 @@
                   });
                   
                   // Use a separate tree to display the descendants
-                  var descendantsTree = new Tree(svg, 'descendant', -1);
+                  var descendantsTree = new Tree(svg, 'descendant', 1);
                   descendantsTree.children(function(person){
                        if(person.collapsed){
                        return;
@@ -275,13 +282,13 @@
                             });
                             // Draw the person's name and position it inside the box
                             nodeEnter.append("text")
-                            .attr("dx", 0)
-                            .attr("dy", 0)
-                            .attr("text-anchor", "start")
+                            .attr("dx", 100)
+                            .attr("dy", 40)
                             .attr('class', 'name')
                             .text(function(d) { 
                                   return d.name; 
                                   })
+                                  
                                   .style('fill-opacity', 0);
                                   
                                   // Update the position of both old and new nodes
