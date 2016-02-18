@@ -20,7 +20,6 @@
 		0670F2F21C767F09002F508E /* CIImage+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F2EF1C767F09002F508E /* CIImage+Convenience.swift */; };
 		0670F2F31C767F09002F508E /* NSIndexSet+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F2F01C767F09002F508E /* NSIndexSet+Convenience.swift */; };
 		0670F2F41C767F09002F508E /* UICollectionView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F2F11C767F09002F508E /* UICollectionView+Convenience.swift */; };
-		0670F2F81C768BC7002F508E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0670F2F71C768BC7002F508E /* Launch Screen.storyboard */; };
 		06BC52B11C10B59D00CF14CE /* FamilyBuilderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BC52B01C10B59D00CF14CE /* FamilyBuilderController.swift */; };
 		06D718DE1BB0544800657ADF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718DD1BB0544800657ADF /* AppDelegate.swift */; };
 		06D718E01BB0544800657ADF /* FamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718DF1BB0544800657ADF /* FamilyViewController.swift */; };
@@ -68,7 +67,6 @@
 		0670F2F01C767F09002F508E /* NSIndexSet+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSIndexSet+Convenience.swift"; path = "PhotoFiles/Convenience Categories/NSIndexSet+Convenience.swift"; sourceTree = "<group>"; };
 		0670F2F11C767F09002F508E /* UICollectionView+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+Convenience.swift"; path = "PhotoFiles/Convenience Categories/UICollectionView+Convenience.swift"; sourceTree = "<group>"; };
 		0670F2F61C7683C9002F508E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		0670F2F71C768BC7002F508E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "PhotoFiles/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		06BC52B01C10B59D00CF14CE /* FamilyBuilderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyBuilderController.swift; sourceTree = "<group>"; };
 		06D718DA1BB0544800657ADF /* momentree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = momentree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06D718DD1BB0544800657ADF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 				0670F2E61C767E33002F508E /* GridViewCell.swift */,
 				0670F2E71C767E33002F508E /* RootListViewController.swift */,
 				0670F2E81C767E33002F508E /* Storyboard.storyboard */,
-				0670F2F71C768BC7002F508E /* Launch Screen.storyboard */,
 			);
 			name = PhotoDisplay;
 			sourceTree = "<group>";
@@ -352,7 +349,6 @@
 				063D2EDE1C24FD3F00D42968 /* AncestorDescendentView.html in Resources */,
 				06D718E31BB0544800657ADF /* Main.storyboard in Resources */,
 				0670F2ED1C767E33002F508E /* Storyboard.storyboard in Resources */,
-				0670F2F81C768BC7002F508E /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

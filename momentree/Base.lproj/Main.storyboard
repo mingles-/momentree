@@ -405,7 +405,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iRW-zA-dD5" firstAttribute="top" secondItem="9Fo-8R-O7S" secondAttribute="bottom" constant="-64" id="1hA-k0-HE0">
-                                <variation key="widthClass=regular" constant="-108"/>
+                                <variation key="widthClass=regular" constant="-64"/>
                             </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="39S-Xv-0At" secondAttribute="trailing" constant="-20" id="6kG-bg-xLU"/>
                             <constraint firstItem="Hdh-MV-wBY" firstAttribute="top" secondItem="39S-Xv-0At" secondAttribute="bottom" constant="44" id="6t8-wh-mZQ"/>
