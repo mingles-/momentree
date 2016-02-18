@@ -16,6 +16,11 @@ class FamilyTree {
     private var ancestorHeight = 0
     private var decendantHeight = 0
     private var hasSpouse = false
+    var maxAncestorHeight = 0
+    var maxDecendantHeight = 0
+    var ancestorSlider = [Int]()
+    var descendantSlider = [Int]()
+    var personList = [Person]()
     
     init(owner: Person, ancestorHeight: Int, descendantHeight: Int, hasSpouse: Bool) {
         self.owner = owner
@@ -25,6 +30,11 @@ class FamilyTree {
         if self.owner?.spouse != nil {
             self.hasSpouse = hasSpouse
         }
+        self.maxDecendantHeight = self.owner!.getDescendantsHeightCount()
+        self.maxAncestorHeight = self.owner!.getAncestorsHeightCount()
+        self.ancestorSlider = [Int](0...self.maxAncestorHeight)
+        self.descendantSlider = [Int](0...self.maxDecendantHeight)
+        self.personList = getPersonList()
         
     }
     
@@ -38,18 +48,29 @@ class FamilyTree {
         return JSON("Hello: test")
     }
     
+    func getMembers() -> JSON {
+        return JSON("Hello: test")
+    }
+    
+    func getPersonList() -> [Person] {
+        personList = [Person]()
+        let ancestors = self.owner?.getAncestors(self.ancestorHeight).0
+        let descendents = self.owner?.getDecendants(self.decendantHeight).0
+        personList = ancestors! + descendents!
+        personList.append(self.owner!)
+        return personList
+    }
+    
     func fullTree() -> [String:AnyObject]
     {
         
-        var ancestors = (self.getAncestorsDict(10))
-        var decendants = (self.getDecendentsDict(10))
+        let ancestors = (self.getAncestorsDict(self.ancestorHeight))
+        var decendants = (self.getDecendentsDict(self.decendantHeight))
         
         if self.owner!.name == decendants["name"] as! String {
             decendants["_parents"] = ancestors
             
         }
-        
-        
         
         return decendants
         
@@ -61,11 +82,10 @@ class FamilyTree {
         var decendentLayers = self.owner!.getAncestors(maxIterations).1
         // get children at highest layer
         var childrenDictionaries: [[String:AnyObject]] = []
-        //        let baseLayer = decendentLayers.first!.1
+
         var adultDicts: [[String:AnyObject]] = []
         
         // iterate down layers appending the previous layer to correct children key
-        
         for var i = decendentLayers.count-1; i >= 0; --i
         {
             adultDicts = []
@@ -100,22 +120,6 @@ class FamilyTree {
         }
         return(adultDicts)
         
-    }
-    
-    
-    
-    
-    func dictionaryfyAncestor(person: Person, ancDict: [[String:AnyObject]]) -> [String:AnyObject]
-    {
-        var json = [String:AnyObject]()
-        
-        if let spouse = person.spouse?.name {
-            json = ["name":person.name, "id":person.name, "spouse":spouse, "_parents": ancDict]
-        } else {
-            json = ["name":person.name, "id":person.name, "_parents": ancDict]
-        }
-        
-        return json
     }
 
     
@@ -171,7 +175,20 @@ class FamilyTree {
         if let spouse = person.spouse?.name {
             json = ["name":person.name, "id":person.name, "spouse":spouse, "_parents": []]
         } else {
-            json = ["name":person.name, "id":person.name, "parent": []]
+            json = ["name":person.name, "id":person.name, "_parents": []]
+        }
+        
+        return json
+    }
+    
+    func dictionaryfyAncestor(person: Person, ancDict: [[String:AnyObject]]) -> [String:AnyObject]
+    {
+        var json = [String:AnyObject]()
+        
+        if let spouse = person.spouse?.name {
+            json = ["name":person.name, "id":person.name, "spouse":spouse, "_parents": ancDict]
+        } else {
+            json = ["name":person.name, "id":person.name, "_parents": ancDict]
         }
         
         return json
@@ -197,16 +214,10 @@ class FamilyTree {
     }
     
     
-    // return specified JSON of tree
-    func getJSON() -> JSON {
-        return JSON("Hello: test")
-    }
-    
-    
     func getHeight() -> Int {
         let descendentHeight = self.owner?.getDecendants(self.decendantHeight).1.count
         let ancestorHeight = self.owner?.getAncestors(self.ancestorHeight).1.count
-        return descendentHeight! + ancestorHeight! + 1
+        return descendentHeight! + ancestorHeight!
     }
     
 }
