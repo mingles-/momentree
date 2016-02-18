@@ -1,0 +1,51 @@
+
+/* Class = "UILabel"; text = "Ancestor Generations:"; ObjectID = "1yl-ls-jd7"; */
+"1yl-ls-jd7.text" = "Ancestor Generations:";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "2qw-mX-SeL"; */
+"2qw-mX-SeL.text" = "name";
+
+/* Class = "UILabel"; text = "Descendant Generations:"; ObjectID = "5Y2-5h-68k"; */
+"5Y2-5h-68k.text" = "Descendant Generations:";
+
+/* Class = "UILabel"; text = "num"; ObjectID = "7WW-B1-kaQ"; */
+"7WW-B1-kaQ.text" = "num";
+
+/* Class = "UILabel"; text = "new person:"; ObjectID = "9PE-Ep-cuX"; */
+"9PE-Ep-cuX.text" = "new person:";
+
+/* Class = "UILabel"; text = "num"; ObjectID = "B0T-Na-hyn"; */
+"B0T-Na-hyn.text" = "num";
+
+/* Class = "UILabel"; text = "father"; ObjectID = "BQS-1A-f1J"; */
+"BQS-1A-f1J.text" = "father";
+
+/* Class = "UILabel"; text = "Include Partner"; ObjectID = "Ko6-85-Uu6"; */
+"Ko6-85-Uu6.text" = "Include Partner";
+
+/* Class = "UILabel"; text = "mother"; ObjectID = "Ubw-aO-Hcd"; */
+"Ubw-aO-Hcd.text" = "mother";
+
+/* Class = "UIButton"; normalTitle = "save"; ObjectID = "gQk-34-Ep3"; */
+"gQk-34-Ep3.normalTitle" = "save";
+
+/* Class = "UIBarButtonItem"; title = "Edit Person Info"; ObjectID = "ihd-iu-ovT"; */
+"ihd-iu-ovT.title" = "Edit Person Info";
+
+/* Class = "UIButton"; normalTitle = "add person"; ObjectID = "j5d-B9-tCo"; */
+"j5d-B9-tCo.normalTitle" = "add person";
+
+/* Class = "UILabel"; text = "mother"; ObjectID = "jzK-ij-iLR"; */
+"jzK-ij-iLR.text" = "mother";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lm5-e5-aBf"; */
+"lm5-e5-aBf.text" = "Label";
+
+/* Class = "UILabel"; text = "father"; ObjectID = "rCn-Qf-AG3"; */
+"rCn-Qf-AG3.text" = "father";
+
+/* Class = "UILabel"; text = "Editing:"; ObjectID = "wLt-ac-Xze"; */
+"wLt-ac-Xze.text" = "Editing:";
+
+/* Class = "UIViewController"; title = "Family View"; ObjectID = "y2c-1U-jRb"; */
+"y2c-1U-jRb.title" = "Family View";
