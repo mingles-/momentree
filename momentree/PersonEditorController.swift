@@ -20,6 +20,17 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
     @IBOutlet weak var saveButton: UIButton!
     
     
+    @IBOutlet weak var fatherChangeMode: UIButton!
+    @IBOutlet weak var motherChangeMode: UIButton!
+    
+    @IBOutlet weak var fatherPersonBox: UITextField!
+    @IBOutlet weak var motherPersonBox: UITextField!
+    
+    var fatherMode = true
+    var motherMode = true
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fatherPicker.dataSource = self
@@ -37,9 +48,14 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
         
         nameLabel.text = thePerson.name
 
+        print("editing " + thePerson.name)
+        
         var tempDataSource = personArray
         tempDataSource.append(nullPerson)
         pickerDataSource = tempDataSource.reverse()
+        
+        fatherPersonBox.hidden = true
+        motherPersonBox.hidden = true
         
         if thePerson.dad != nil {
             for p in pickerDataSource {
@@ -80,30 +96,87 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
         
             let newPerson = personArray[selectedPersonIndex]
         
+            // set dad or remove dad
             let fatherIndex = fatherPicker.selectedRowInComponent(0)
             if pickerDataSource[fatherIndex].name != "" {
+                print("setting " + newPerson.name + " dad")
                 newPerson.setDad(pickerDataSource[fatherIndex])
             } else {
+                print("removing " + newPerson.name + " dad")
                 newPerson.removeDad()
             }
-            
+        
+        
+            // set mum or remove mum
             let motherIndex = motherPicker.selectedRowInComponent(0)
             if pickerDataSource[motherIndex].name != "" {
+                print("setting " + newPerson.name + " mum")
                 newPerson.setMum(pickerDataSource[motherIndex])
             } else {
+                print("removing " + newPerson.name + " mum")
                 newPerson.removeMum()
             }
+        
+        
+            // assuming both aren't 0, set parents as spouse
             
             if pickerDataSource[fatherIndex].name != "" && pickerDataSource[motherIndex].name != "" {
-                pickerDataSource[motherIndex].setSpouse(pickerDataSource[fatherIndex])
                 
-            } else {
-                newPerson.removeParents()
-            }
-        
-            personArray.removeAtIndex(selectedPersonIndex)
-            personArray.append(newPerson)
+                pickerDataSource[motherIndex].setSpouse(pickerDataSource[fatherIndex])
         }
+//            } else {
+//                print("does this")
+//                newPerson.removeParents()
+//            }
+    
+        
+            personArray[selectedPersonIndex] = newPerson
+
+        
+        
+        }
+    
+    @IBAction func fatherModeChangePressed(sender: AnyObject) {
+        
+        if fatherMode {
+            fatherMode = false
+        } else {
+            fatherMode = true
+        }
+        
+        if fatherMode {
+            fatherPicker.hidden = false
+            fatherPersonBox.hidden = true
+            fatherChangeMode.setTitle("add new father", forState: .Normal)
+        } else {
+            fatherPicker.hidden = true
+            fatherPersonBox.hidden = false
+            fatherChangeMode.setTitle("add existing father", forState: .Normal)
+        }
+        
+        
+        
+    }
+    
+    @IBAction func motherChangeModePressed(sender: AnyObject) {
+        
+        if motherMode {
+            motherMode = false
+        } else {
+            motherMode = true
+        }
+        
+        if motherMode {
+            motherPicker.hidden = false
+            motherPersonBox.hidden = true
+            motherChangeMode.setTitle("add new mother", forState: .Normal)
+        } else {
+            motherPicker.hidden = true
+            motherPersonBox.hidden = false
+            motherChangeMode.setTitle("add existing mother", forState: .Normal)
+        }
+        
+    }
         
     
 
