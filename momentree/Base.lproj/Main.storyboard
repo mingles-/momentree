@@ -76,6 +76,42 @@
                                     <rect key="frame" x="516" y="250" width="281" height="216"/>
                                 </variation>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqb-LD-VqH">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="add existing person"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="109" y="226" width="213" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="fatherModeChangePressed:" destination="DkW-rG-old" eventType="touchDown" id="CsV-hF-Z8o"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yxW-nx-Ayt">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="608" y="276" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mta-IN-TjV">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="319" y="276" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbo-5V-ZFc">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="add existing person"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="702" y="226" width="257" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="motherChangeModePressed:" destination="DkW-rG-old" eventType="touchDown" id="WUC-Wu-4cN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -87,6 +123,10 @@
                                 <exclude reference="Ubw-aO-Hcd"/>
                                 <exclude reference="ryo-dh-Jxs"/>
                                 <exclude reference="bJ9-i6-PUF"/>
+                                <exclude reference="bqb-LD-VqH"/>
+                                <exclude reference="yxW-nx-Ayt"/>
+                                <exclude reference="Mta-IN-TjV"/>
+                                <exclude reference="mbo-5V-ZFc"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
@@ -100,18 +140,30 @@
                                 <include reference="bJ9-i6-PUF"/>
                             </mask>
                         </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="bqb-LD-VqH"/>
+                                <include reference="yxW-nx-Ayt"/>
+                                <include reference="Mta-IN-TjV"/>
+                                <include reference="mbo-5V-ZFc"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="addPersonFamilyBuilderButton" destination="j5d-B9-tCo" id="k3O-iC-xCV"/>
+                        <outlet property="fatherChangeMode" destination="bqb-LD-VqH" id="Cvk-my-5ij"/>
+                        <outlet property="fatherPersonBox" destination="Mta-IN-TjV" id="UuC-32-EA6"/>
                         <outlet property="fatherPicker" destination="ryo-dh-Jxs" id="tck-HQ-gj1"/>
+                        <outlet property="motherChangeMode" destination="mbo-5V-ZFc" id="Xjw-71-8za"/>
+                        <outlet property="motherPersonBox" destination="yxW-nx-Ayt" id="S3g-5c-vLY"/>
                         <outlet property="motherPicker" destination="bJ9-i6-PUF" id="Lhx-Rm-kt6"/>
                         <outlet property="nameTextField" destination="dsT-6L-e7k" id="bKe-KH-w0O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OrX-44-Mkv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1785" y="-335"/>
+            <point key="canvasLocation" x="1785" y="-335.25"/>
         </scene>
         <!--Person Editor Controller-->
         <scene sceneID="pPw-Ue-zwb">
@@ -181,6 +233,43 @@
                                 </variation>
                                 <connections>
                                     <action selector="addPersonButton:" destination="mM4-4E-JEr" eventType="touchDown" id="X24-hU-ebC"/>
+                                    <segue destination="y2c-1U-jRb" kind="show" id="66T-M8-S0k"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kHM-h6-xMN">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="623" y="286" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DhE-c8-adD">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="334" y="286" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STm-Dj-Tu4">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="add existing person"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="717" y="236" width="257" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="motherChangeModePressed:" destination="mM4-4E-JEr" eventType="touchDown" id="wjA-du-FM0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8O-U2-0gg">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="add existing person"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="124" y="236" width="213" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="fatherModeChangePressed:" destination="mM4-4E-JEr" eventType="touchDown" id="aIb-er-oyh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -194,6 +283,10 @@
                                 <exclude reference="hfX-Zu-atQ"/>
                                 <exclude reference="7Uh-7B-pA8"/>
                                 <exclude reference="gQk-34-Ep3"/>
+                                <exclude reference="kHM-h6-xMN"/>
+                                <exclude reference="DhE-c8-adD"/>
+                                <exclude reference="STm-Dj-Tu4"/>
+                                <exclude reference="s8O-U2-0gg"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
@@ -207,10 +300,22 @@
                                 <include reference="gQk-34-Ep3"/>
                             </mask>
                         </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="kHM-h6-xMN"/>
+                                <include reference="DhE-c8-adD"/>
+                                <include reference="STm-Dj-Tu4"/>
+                                <include reference="s8O-U2-0gg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="fatherChangeMode" destination="s8O-U2-0gg" id="frR-X8-Lcj"/>
+                        <outlet property="fatherPersonBox" destination="DhE-c8-adD" id="rqI-9N-X70"/>
                         <outlet property="fatherPicker" destination="hfX-Zu-atQ" id="Nok-be-Nww"/>
+                        <outlet property="motherChangeMode" destination="STm-Dj-Tu4" id="Qde-K4-xbw"/>
+                        <outlet property="motherPersonBox" destination="kHM-h6-xMN" id="zpg-kQ-Z1N"/>
                         <outlet property="motherPicker" destination="7Uh-7B-pA8" id="GgO-Ng-PEj"/>
                         <outlet property="nameLabel" destination="2qw-mX-SeL" id="ziT-JK-3O3"/>
                         <outlet property="saveButton" destination="gQk-34-Ep3" id="1I7-hu-Wjs"/>
@@ -218,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvp-mK-7fW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1410" y="-1170"/>
+            <point key="canvasLocation" x="1377.75" y="-1146"/>
         </scene>
         <!--Storyboard-->
         <scene sceneID="KuV-qw-0cS">
@@ -245,7 +350,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" id="Io9-3o-09e" customClass="PersonCell" customModule="momentree" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="399" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="399" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Io9-3o-09e" id="DAa-pa-JXQ">
                                             <rect key="frame" x="0.0" y="0.0" width="399" height="43"/>
@@ -391,6 +496,9 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="191" y="657" width="51" height="31"/>
                                 </variation>
+                                <connections>
+                                    <action selector="spouseSwitchChanged:" destination="y2c-1U-jRb" eventType="valueChanged" id="fLf-GT-MFy"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="num" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7WW-B1-kaQ">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -475,6 +583,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="moments" width="148" id="iN1-xU-N83">
                             <connections>
+                                <action selector="momentsPressed:" destination="y2c-1U-jRb" id="PBb-DB-jCH"/>
                                 <segue destination="1J8-xt-d1Y" kind="show" id="xCq-Xf-9Vh"/>
                             </connections>
                         </barButtonItem>
@@ -516,6 +625,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jtA-mf-1iV"/>
+        <segue reference="66T-M8-S0k"/>
     </inferredMetricsTieBreakers>
 </document>
