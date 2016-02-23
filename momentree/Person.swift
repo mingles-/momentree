@@ -66,19 +66,39 @@ class Person: CustomStringConvertible {
     func removeMum()
     {
         
-        if self.mum?.spouse != nil {
-            self.mum!.removeSpouse()
+        if self.mum != nil {
+            self.mum?.removeChild(self)
+            self.mum = nil
         }
-        self.mum = nil
+        
     }
     
     func removeDad()
     {
         
-        if self.dad?.spouse != nil {
-            self.dad!.removeSpouse()
+
+        if self.dad != nil {
+            
+            self.dad?.removeChild(self)
+            self.dad = nil
+            
         }
-        self.dad = nil
+        
+    }
+    
+    func removeChild(child: Person) {
+        
+        print(self.name)
+        for childIndex in 0...self.children.count-1 {
+            if self.children[childIndex] === child {
+                self.children.removeAtIndex(childIndex)
+            }
+        }
+        
+        if self.children.count == 0 {
+            self.removeSpouse()
+        }
+
     }
     
     func removeSpouse()
@@ -89,6 +109,8 @@ class Person: CustomStringConvertible {
     
     func removeParents()
     {
+        self.dad?.removeChild(self)
+        self.mum?.removeChild(self)
         self.removeDad()
         self.removeMum()
         self.removeSpouse()
