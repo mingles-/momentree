@@ -10,6 +10,8 @@ import UIKit
 import SwiftyJSON
 
 var personArray = [Person]()
+var momentList = [Person]()
+
 var fiona = Person(name: "fiona")
 var mingles = Person(name:"mingles")
 var stuart = Person(name:"stuart")
@@ -27,9 +29,6 @@ var joan = Person(name: "joan")
 var rab = Person(name: "rab")
 var louis = Person(name: "louis")
 
-
-
-
 var ancestorSliderValues = [0,1,2,3,4]
 var descendantSliderValues = [0,1,2,3,4]
 
@@ -39,10 +38,6 @@ var descendantHeight = descendantSliderValues.last!
 var selectedPersonIndex = 0
 
 var theTree = FamilyTree(owner: personArray[selectedPersonIndex], ancestorHeight: ancestorHeight, descendantHeight: descendantHeight, hasSpouse: true)
-
-
-
-
 
 class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
 
@@ -60,7 +55,7 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var spouseLabel: UILabel!
     @IBOutlet weak var spouseSwitch: UISwitch!
     
-
+    var hasSpouse = false
     var selectedPerson = Person(name: "")
     
     override func viewDidLoad() {
@@ -79,11 +74,19 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
             emma.setParents(rab, mum: joan)
             stuart.setParents(francis, mum: cathy)
             francis.setDad(louis)
+            
+            selectedPersonIndex = personArray.count-1
         }
         
-        selectedPersonIndex = personArray.count-1
-        selectedPerson = personArray[selectedPersonIndex]
         
+        selectedPerson = personArray[selectedPersonIndex]
+        if selectedPerson.spouse != nil {
+            hasSpouse = true
+            spouseSwitch.setOn(true, animated: true)
+        } else {
+            hasSpouse = false
+            spouseSwitch.setOn(false, animated: true)
+        }
         
         ancestorSlider.minimumValue = 0
         ancestorSlider.maximumValue = Float(ancestorSliderValues.last!)
@@ -110,8 +113,11 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func webViewDidFinishLoad(webView: UIWebView) {
         
-        theTree = FamilyTree(owner: selectedPerson, ancestorHeight: ancestorHeight, descendantHeight: descendantHeight, hasSpouse: true)
+        theTree = FamilyTree(owner: selectedPerson, ancestorHeight: ancestorHeight, descendantHeight: descendantHeight, hasSpouse: hasSpouse)
         
+        // set List for momentree
+        momentList = theTree.getPersonList()
+        print(momentList)
         // alter slider values based on new tree
         ancestorSliderValues = theTree.ancestorSlider
         descendantSliderValues = theTree.descendantSlider
@@ -143,6 +149,7 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
             spouseLabel.hidden = true
             spouseSwitch.hidden = true
             
+            
         } else {
             
             spouseLabel.hidden = false
@@ -151,7 +158,6 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
        
         let jsonInput = JSON(theTree.fullTree()).rawString()
-
         
         var textToInput = "" + jsonInput! + ""
         textToInput = textToInput.stringByReplacingOccurrencesOfString("\n", withString: "")
@@ -207,13 +213,22 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         selectedPersonIndex = indexPath.row
         webView.reload()
     }
-    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func spouseSwitchChanged(sender: AnyObject) {
+        
+        if hasSpouse {
+            hasSpouse = false
+        } else {
+            hasSpouse = true
+        }
+        webView.reload()
+    }
     
 
 }

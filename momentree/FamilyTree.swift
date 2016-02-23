@@ -27,9 +27,8 @@ class FamilyTree {
         self.description = "\(self.owner!.name)'s Family Tree"
         self.ancestorHeight = ancestorHeight
         self.decendantHeight = descendantHeight
-        if self.owner?.spouse != nil {
-            self.hasSpouse = hasSpouse
-        }
+        self.hasSpouse = hasSpouse
+        
         self.maxDecendantHeight = self.owner!.getDescendantsHeightCount()
         self.maxAncestorHeight = self.owner!.getAncestorsHeightCount()
         self.ancestorSlider = [Int](0...self.maxAncestorHeight)
@@ -57,7 +56,13 @@ class FamilyTree {
         let ancestors = self.owner?.getAncestors(self.ancestorHeight).0
         let descendents = self.owner?.getDecendants(self.decendantHeight).0
         personList = ancestors! + descendents!
+        
+        if self.owner?.spouse != nil && self.hasSpouse {
+            personList.append((self.owner?.spouse)!)
+        }
+        
         personList.append(self.owner!)
+        
         return personList
     }
     
@@ -68,6 +73,9 @@ class FamilyTree {
         var decendants = (self.getDecendentsDict(self.decendantHeight))
         
         if self.owner!.name == decendants["name"] as! String {
+            if self.hasSpouse && self.owner!.spouse != nil {
+                decendants["name"] = decendants["name"] as! String + " & " + (self.owner!.spouse?.name)!
+            }
             decendants["_parents"] = ancestors
             
         }
