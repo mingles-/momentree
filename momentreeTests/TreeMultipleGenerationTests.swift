@@ -185,5 +185,27 @@ class TreeMultipleGenerationTests: XCTestCase {
         
     }
     
+    func testDescendentsHeightCounts() {
+        var num = mingles.getDescendantsHeightCount()
+        XCTAssertEqual(num, 0)
+        num = stuart.getDescendantsHeightCount()
+        XCTAssertEqual(num, 1)
+        num = francis.getDescendantsHeightCount()
+        XCTAssertEqual(num, 2)
+        num = louis.getDescendantsHeightCount()
+        XCTAssertEqual(num, 3)
+    }
+    
+    func testAncestorsHeightCounts() {
+        var num = mingles.getAncestorsHeightCount()
+        XCTAssertEqual(num, 3)
+        num = stuart.getAncestorsHeightCount()
+        XCTAssertEqual(num, 2)
+        num = francis.getAncestorsHeightCount()
+        XCTAssertEqual(num, 1)
+        num = louis.getAncestorsHeightCount()
+        XCTAssertEqual(num, 0)
+    }
+    
 
 }
