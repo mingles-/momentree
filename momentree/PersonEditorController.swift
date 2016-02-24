@@ -57,6 +57,9 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
         fatherPersonBox.hidden = true
         motherPersonBox.hidden = true
         
+        fatherPicker.hidden = false
+        motherPicker.hidden = false
+        
         if thePerson.dad != nil {
             for p in pickerDataSource {
                 if (p === thePerson.dad) {
@@ -98,36 +101,57 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
         
             // set dad or remove dad
             let fatherIndex = fatherPicker.selectedRowInComponent(0)
-            if pickerDataSource[fatherIndex].name != "" {
-                print("setting " + newPerson.name + " dad")
-                newPerson.setDad(pickerDataSource[fatherIndex])
-            } else {
-                print("removing " + newPerson.name + " dad")
-                newPerson.removeDad()
+        
+            if fatherMode {
+                
+                
+                if pickerDataSource[fatherIndex].name != "" {
+                    print("setting " + newPerson.name + " dad")
+                    newPerson.setDad(pickerDataSource[fatherIndex])
+                } else {
+                    print("removing " + newPerson.name + " dad")
+                    newPerson.removeDad()
+                }
+            } else if fatherPersonBox.text != "" {
+                let newDad = Person(name: fatherPersonBox.text!)
+                newPerson.setDad(newDad)
+                personArray.append(newDad)
+                
             }
+        
         
         
             // set mum or remove mum
             let motherIndex = motherPicker.selectedRowInComponent(0)
-            if pickerDataSource[motherIndex].name != "" {
-                print("setting " + newPerson.name + " mum")
-                newPerson.setMum(pickerDataSource[motherIndex])
-            } else {
-                print("removing " + newPerson.name + " mum")
-                newPerson.removeMum()
-            }
         
+            if motherMode {
+                if pickerDataSource[motherIndex].name != "" {
+                    print("setting " + newPerson.name + " mum")
+                    newPerson.setMum(pickerDataSource[motherIndex])
+                } else {
+                    print("removing " + newPerson.name + " mum")
+                    newPerson.removeMum()
+                }
+            } else if motherPersonBox.text != "" {
+                let newMum = Person(name: motherPersonBox.text!)
+                
+                if !fatherMode {
+                    personArray[personArray.count-1].setSpouse(newMum)
+                }
+
+                
+                personArray.append(newMum)
+                newPerson.setMum(newMum)
+                }
         
             // assuming both aren't 0, set parents as spouse
             
             if pickerDataSource[fatherIndex].name != "" && pickerDataSource[motherIndex].name != "" {
                 
                 pickerDataSource[motherIndex].setSpouse(pickerDataSource[fatherIndex])
-        }
-//            } else {
-//                print("does this")
-//                newPerson.removeParents()
-//            }
+            }
+        
+        
     
         
             personArray[selectedPersonIndex] = newPerson
