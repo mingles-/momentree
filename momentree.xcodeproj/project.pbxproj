@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0621650F1C14DAFD00329494 /* PersonEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621650E1C14DAFD00329494 /* PersonEditorController.swift */; };
+		06296CAB1C7E3C9A00C9BA88 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06296CAA1C7E3C9A00C9BA88 /* TestViewController.swift */; };
 		063A95891BD8409B00D7006D /* TreeMultipleGenerationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063A95881BD8409B00D7006D /* TreeMultipleGenerationTests.swift */; };
 		063D2EDE1C24FD3F00D42968 /* AncestorDescendentView.html in Resources */ = {isa = PBXBuildFile; fileRef = 063D2EDD1C24FD3F00D42968 /* AncestorDescendentView.html */; };
 		063FE1C71BBC67BA003AA01F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FE1C61BBC67BA003AA01F /* Person.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		0621650E1C14DAFD00329494 /* PersonEditorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonEditorController.swift; sourceTree = "<group>"; };
+		06296CAA1C7E3C9A00C9BA88 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		063A95881BD8409B00D7006D /* TreeMultipleGenerationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeMultipleGenerationTests.swift; sourceTree = "<group>"; };
 		063D2EDD1C24FD3F00D42968 /* AncestorDescendentView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AncestorDescendentView.html; sourceTree = "<group>"; };
 		063FE1C61BBC67BA003AA01F /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				06FBAF741C27B369006FD50A /* WebviewFiles */,
 				063FE1C51BBC6730003AA01F /* SupportingFIles */,
 				06D718DF1BB0544800657ADF /* FamilyViewController.swift */,
+				06296CAA1C7E3C9A00C9BA88 /* TestViewController.swift */,
 				0621650E1C14DAFD00329494 /* PersonEditorController.swift */,
 				06BC52B01C10B59D00CF14CE /* FamilyBuilderController.swift */,
 				063FE1C61BBC67BA003AA01F /* Person.swift */,
@@ -431,6 +434,7 @@
 				0670F2E91C767E33002F508E /* AssetGridViewController.swift in Sources */,
 				0670F2EB1C767E33002F508E /* GridViewCell.swift in Sources */,
 				06D718E01BB0544800657ADF /* FamilyViewController.swift in Sources */,
+				06296CAB1C7E3C9A00C9BA88 /* TestViewController.swift in Sources */,
 				0670F2F41C767F09002F508E /* UICollectionView+Convenience.swift in Sources */,
 				0670F2EA1C767E33002F508E /* AssetViewController.swift in Sources */,
 				06D718DE1BB0544800657ADF /* AppDelegate.swift in Sources */,

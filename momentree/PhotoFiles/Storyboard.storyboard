@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--Photos-->
+        <!--Moments-->
         <scene sceneID="mUr-pn-Lqf">
             <objects>
-                <tableViewController id="Eg3-EV-Pfg" customClass="AAPLRootListViewController" sceneMemberID="viewController">
+                <tableViewController id="Eg3-EV-Pfg" customClass="RootListViewController" customModule="momentree" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="G9F-3P-tcj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +41,7 @@
                             <outlet property="delegate" destination="Eg3-EV-Pfg" id="gGB-Gl-Ha4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Photos" id="PHG-DW-u7x">
+                    <navigationItem key="navigationItem" title="Moments" id="PHG-DW-u7x">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DlC-wZ-zIE">
                             <connections>
                                 <action selector="handleAddButtonItem:" destination="Eg3-EV-Pfg" id="LAq-iV-AWd"/>
@@ -276,6 +276,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sZd-hd-3lH"/>
+        <segue reference="zdI-cg-b4l"/>
     </inferredMetricsTieBreakers>
 </document>

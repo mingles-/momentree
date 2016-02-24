@@ -24,6 +24,7 @@ class AssetViewController: UIViewController, PHPhotoLibraryChangeObserver {
     var asset: PHAsset?
     var assetCollection: PHAssetCollection?
     
+    
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var editButton: UIBarButtonItem!
     @IBOutlet private weak var progressView: UIProgressView!

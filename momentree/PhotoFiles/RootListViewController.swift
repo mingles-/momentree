@@ -23,15 +23,21 @@ private let AllPhotosSegue = "showAllPhotos"
 private let CollectionSegue = "showCollection"
 
 
-@objc(AAPLRootListViewController)
 class RootListViewController: UITableViewController, PHPhotoLibraryChangeObserver {
+    
+    @IBOutlet weak var momentsListLabel: UILabel!
     
     private var sectionFetchResults: [PHFetchResult] = []
     private var sectionLocalizedTitles: [String] = []
     
+    
+    
+    
+    
     override func awakeFromNib() {
      
-        print(momentList)
+        
+        
         
         // Create a PHFetchResult object for each section in the table view.
         let allPhotosOptions = PHFetchOptions()
@@ -41,6 +47,7 @@ class RootListViewController: UITableViewController, PHPhotoLibraryChangeObserve
         
         // Get Lists of Photos of users based on names
         let names = ["michael", "Faces", "fiona"]
+//        momentsListLabel.text = "hello"
         var predicates = [NSPredicate] ()
         for name in names {
             let predicate = NSPredicate(format: "%K == %@", "title", name)
