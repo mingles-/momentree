@@ -7,8 +7,7 @@
         <!--Moments-->
         <scene sceneID="mUr-pn-Lqf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CQO-Bv-5fk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Eg3-EV-Pfg" customClass="RootListViewController" customModule="momentree" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Eg3-EV-Pfg" customClass="MomentRootListViewController" customModule="momentree" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="G9F-3P-tcj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,13 +49,14 @@
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CQO-Bv-5fk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1080" y="422.5"/>
         </scene>
-        <!--Asset Grid View Controller-->
+        <!--Moment Asset Grid View Controller-->
         <scene sceneID="1DO-QJ-EBB">
             <objects>
-                <collectionViewController id="TL6-96-rkl" customClass="AAPLAssetGridViewController" sceneMemberID="viewController">
+                <collectionViewController id="TL6-96-rkl" customClass="MomentAssetGridViewController" customModule="momentree" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="7tL-ub-r9I">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +68,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Ugt-80-ozT" customClass="AAPLGridViewCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Ugt-80-ozT" customClass="MomentGridViewCell" customModule="momentree" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -123,10 +123,10 @@
             </objects>
             <point key="canvasLocation" x="1824.375" y="422.5"/>
         </scene>
-        <!--Asset View Controller-->
+        <!--Moment Asset Grid View Controller-->
         <scene sceneID="kWQ-TD-0bM">
             <objects>
-                <viewController id="fvd-bf-hd7" customClass="AAPLAssetViewController" sceneMemberID="viewController">
+                <viewController id="fvd-bf-hd7" customClass="MomentAssetGridViewController" customModule="momentree" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sZD-4F-xef"/>
                         <viewControllerLayoutGuide type="bottom" id="4QP-ma-cUv"/>
@@ -184,11 +184,10 @@
             </objects>
             <point key="canvasLocation" x="2544" y="422"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Moments Controller-->
         <scene sceneID="Gtx-k3-924">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9nN-Zf-keI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController toolbarHidden="NO" id="AFw-ea-UbI" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="AFw-ea-UbI" customClass="MomentsController" customModule="momentree" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="o9t-Rx-LjY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -201,13 +200,14 @@
                         <segue destination="Eg3-EV-Pfg" kind="relationship" relationship="rootViewController" id="nR9-gj-voe"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9nN-Zf-keI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="322.5" y="422.5"/>
         </scene>
-        <!--Live Asset View Controller-->
+        <!--Moment Live Asset View Controller-->
         <scene sceneID="flb-Ha-hXM">
             <objects>
-                <viewController id="nli-Vz-bPM" customClass="AAPLLiveAssetViewController" sceneMemberID="viewController">
+                <viewController id="nli-Vz-bPM" customClass="MomentLiveAssetViewController" customModule="momentree" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fnw-1U-Eh4"/>
                         <viewControllerLayoutGuide type="bottom" id="0dR-SV-haJ"/>
