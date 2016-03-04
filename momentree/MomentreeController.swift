@@ -18,28 +18,25 @@ class MomentreeController: UINavigationController {
     private var momentreeList: [PHFetchResult] = []
     private var someMoments: [PHAssetCollection] = []
     
-    
-    func compoundPredicateGenerator(formatter: String, formatValues: [String]) -> PHFetchOptions {
-        let fetchOptions = PHFetchOptions()
-        var predicates = [NSPredicate] ()
-        
-        for formatValue in formatValues {
-            let predicate = NSPredicate(format: "%K == %@", formatter, formatValue)
-            predicates.append(predicate)
-        }
-        
-        let compoundPedicate = NSCompoundPredicate(type: .OrPredicateType, subpredicates: predicates)
-        fetchOptions.predicate = compoundPedicate
-        
-        return fetchOptions
-    }
-    
     override func awakeFromNib() {
         
         
         globalMomentree = nil
-        let names = ["michael", "fiona", "Lesley"]
         
+        var names: [String] = []
+        
+        for person in momentList {
+            if person.albumTitle != nil {
+                names.append(person.albumTitle!)
+            }
+        }
+        
+        if names.count == 0 {
+            names = ["michael", "fiona", "Lesley"]
+        }
+        
+        
+        print(names)
         
         // get albums based person inputs
         let fetchOptions = self.compoundPredicateGenerator("title", formatValues: names)
@@ -99,37 +96,27 @@ class MomentreeController: UINavigationController {
         
         let momentreeFetch: PHFetchResult = PHAssetCollection.fetchCollectionsInCollectionList(momentreeCollectionList, options: nil)
         
-//        self.sectionFetchResults = [momentreeFetch]
-        print("got here")
-        
-//        
-//        let assetGridViewController = MomentAssetGridViewController()
-//        
-//        // Set the title of the AAPLAssetGridViewController.
-//        assetGridViewController.title = "momentTree"
-//        
-//        
-//        // Get the PHFetchResult for the selected section.
-//        let fetchResult = self.sectionFetchResults[0]
-//        
-//        let assetCollection = fetchResult[0] as! PHAssetCollection
-//        
-//        // Configure the AAPLAssetGridViewController with the asset collection.
-//        let assetsFetchResult = PHAsset.fetchAssetsInAssetCollection(assetCollection, options: nil)
-//        
-//        
-//        assetGridViewController.assetsFetchResults = assetsFetchResult
-//        assetGridViewController.assetCollection = assetCollection
-//        assetGridViewController.momentreeFetchResults = sectionFetchResults[0]
+        self.sectionFetchResults = [momentreeFetch]
+
         globalMomentree = momentreeFetch
 
         
-    
-
-    
-    
     }
 
+    func compoundPredicateGenerator(formatter: String, formatValues: [String]) -> PHFetchOptions {
+        let fetchOptions = PHFetchOptions()
+        var predicates = [NSPredicate] ()
+        
+        for formatValue in formatValues {
+            let predicate = NSPredicate(format: "%K == %@", formatter, formatValue)
+            predicates.append(predicate)
+        }
+        
+        let compoundPedicate = NSCompoundPredicate(type: .OrPredicateType, subpredicates: predicates)
+        fetchOptions.predicate = compoundPedicate
+        
+        return fetchOptions
+    }
 
 
 

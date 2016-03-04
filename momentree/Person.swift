@@ -13,8 +13,8 @@ class Person: CustomStringConvertible {
     var name: String = ""
     var dad: Person?
     var mum: Person?
-//    var relationship = [Person]()
     var spouse: Person?
+    var albumTitle: String?
     var children = [Person]()
     
     var description: String {
@@ -26,6 +26,14 @@ class Person: CustomStringConvertible {
     init(name: String)
     {
         self.name = name
+    }
+    
+    func setAlbumTitle(albumTitle: String) {
+        self.albumTitle = albumTitle
+    }
+    
+    func removeAlbumTitle() {
+        self.albumTitle = nil
     }
     
     func setDad(dad: Person)
