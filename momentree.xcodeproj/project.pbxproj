@@ -14,7 +14,6 @@
 		06296CB31C7E517100C9BA88 /* MomentAssetGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06296CB21C7E517100C9BA88 /* MomentAssetGridViewController.swift */; };
 		06296CB51C7E518400C9BA88 /* MomentAssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06296CB41C7E518400C9BA88 /* MomentAssetViewController.swift */; };
 		06296CB71C7E519000C9BA88 /* MomentGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06296CB61C7E519000C9BA88 /* MomentGridViewCell.swift */; };
-		06296CB91C7E569D00C9BA88 /* MomentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06296CB81C7E569D00C9BA88 /* MomentsController.swift */; };
 		063A95891BD8409B00D7006D /* TreeMultipleGenerationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063A95881BD8409B00D7006D /* TreeMultipleGenerationTests.swift */; };
 		063D2EDE1C24FD3F00D42968 /* AncestorDescendentView.html in Resources */ = {isa = PBXBuildFile; fileRef = 063D2EDD1C24FD3F00D42968 /* AncestorDescendentView.html */; };
 		063FE1C71BBC67BA003AA01F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FE1C61BBC67BA003AA01F /* Person.swift */; };
@@ -67,7 +66,6 @@
 		06296CB21C7E517100C9BA88 /* MomentAssetGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentAssetGridViewController.swift; path = PhotoFiles/MomentAssetGridViewController.swift; sourceTree = "<group>"; };
 		06296CB41C7E518400C9BA88 /* MomentAssetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentAssetViewController.swift; sourceTree = "<group>"; };
 		06296CB61C7E519000C9BA88 /* MomentGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentGridViewCell.swift; path = PhotoFiles/MomentGridViewCell.swift; sourceTree = "<group>"; };
-		06296CB81C7E569D00C9BA88 /* MomentsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsController.swift; sourceTree = "<group>"; };
 		063A95881BD8409B00D7006D /* TreeMultipleGenerationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeMultipleGenerationTests.swift; sourceTree = "<group>"; };
 		063D2EDD1C24FD3F00D42968 /* AncestorDescendentView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AncestorDescendentView.html; sourceTree = "<group>"; };
 		063FE1C61BBC67BA003AA01F /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 				06D718E11BB0544800657ADF /* Main.storyboard */,
 				06296CAE1C7E504300C9BA88 /* moments.storyboard */,
 				064AE9FB1BF944270032C657 /* PersonCell.swift */,
-				06296CB81C7E569D00C9BA88 /* MomentsController.swift */,
 				06296CB01C7E516300C9BA88 /* MomentRootListViewController.swift */,
 				06296CB41C7E518400C9BA88 /* MomentAssetViewController.swift */,
 				06296CB61C7E519000C9BA88 /* MomentGridViewCell.swift */,
@@ -456,7 +453,6 @@
 				0670F2E91C767E33002F508E /* AssetGridViewController.swift in Sources */,
 				0670F2EB1C767E33002F508E /* GridViewCell.swift in Sources */,
 				06D718E01BB0544800657ADF /* FamilyViewController.swift in Sources */,
-				06296CB91C7E569D00C9BA88 /* MomentsController.swift in Sources */,
 				06296CAB1C7E3C9A00C9BA88 /* TestViewController.swift in Sources */,
 				0670F2F41C767F09002F508E /* UICollectionView+Convenience.swift in Sources */,
 				06296CB11C7E516300C9BA88 /* MomentRootListViewController.swift in Sources */,
