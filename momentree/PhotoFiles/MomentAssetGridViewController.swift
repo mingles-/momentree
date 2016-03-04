@@ -10,9 +10,9 @@ import UIKit
 import Photos
 import PhotosUI
 
+
 class MomentAssetGridViewController: UICollectionViewController, PHPhotoLibraryChangeObserver {
     
-    var momentreeFetchResults: PHFetchResult?
     var assetsFetchResults: PHFetchResult?
     var assetCollection: PHAssetCollection?
     
@@ -22,8 +22,18 @@ class MomentAssetGridViewController: UICollectionViewController, PHPhotoLibraryC
     
     let CellReuseIdentifier = "Cell"
     static var AssetGridThumbnailSize: CGSize = CGSize()
+
     
     override func awakeFromNib() {
+        
+        if globalMomentree != nil {
+            self.assetsFetchResults = globalMomentree
+            self.assetCollection = (globalMomentree![0] as! PHAssetCollection)
+            let assetsFetchResult = PHAsset.fetchAssetsInAssetCollection(self.assetCollection!, options: nil)
+            self.assetsFetchResults = assetsFetchResult
+        }
+        
+        
         self.imageManager = PHCachingImageManager()
         self.resetCachedAssets()
         

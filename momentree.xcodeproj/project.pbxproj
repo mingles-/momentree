@@ -27,6 +27,8 @@
 		0670F2F31C767F09002F508E /* NSIndexSet+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F2F01C767F09002F508E /* NSIndexSet+Convenience.swift */; };
 		0670F2F41C767F09002F508E /* UICollectionView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F2F11C767F09002F508E /* UICollectionView+Convenience.swift */; };
 		06BC52B11C10B59D00CF14CE /* FamilyBuilderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BC52B01C10B59D00CF14CE /* FamilyBuilderController.swift */; };
+		06D0E5901C89F91F002345C1 /* MomentreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D0E58F1C89F91F002345C1 /* MomentreeController.swift */; };
+		06D0E5921C89FEC1002345C1 /* momentree.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06D0E5911C89FEC1002345C1 /* momentree.storyboard */; };
 		06D718DE1BB0544800657ADF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718DD1BB0544800657ADF /* AppDelegate.swift */; };
 		06D718E01BB0544800657ADF /* FamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D718DF1BB0544800657ADF /* FamilyViewController.swift */; };
 		06D718E31BB0544800657ADF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06D718E11BB0544800657ADF /* Main.storyboard */; };
@@ -80,6 +82,8 @@
 		0670F2F11C767F09002F508E /* UICollectionView+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+Convenience.swift"; path = "PhotoFiles/Convenience Categories/UICollectionView+Convenience.swift"; sourceTree = "<group>"; };
 		0670F2F61C7683C9002F508E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		06BC52B01C10B59D00CF14CE /* FamilyBuilderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyBuilderController.swift; sourceTree = "<group>"; };
+		06D0E58F1C89F91F002345C1 /* MomentreeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentreeController.swift; sourceTree = "<group>"; };
+		06D0E5911C89FEC1002345C1 /* momentree.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = momentree.storyboard; sourceTree = "<group>"; };
 		06D718DA1BB0544800657ADF /* momentree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = momentree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06D718DD1BB0544800657ADF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06D718DF1BB0544800657ADF /* FamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyViewController.swift; sourceTree = "<group>"; };
@@ -198,8 +202,10 @@
 				06DCDED71BDC439C00066AF4 /* FamilyTree.swift */,
 				06D718E11BB0544800657ADF /* Main.storyboard */,
 				06296CAE1C7E504300C9BA88 /* moments.storyboard */,
+				06D0E5911C89FEC1002345C1 /* momentree.storyboard */,
 				064AE9FB1BF944270032C657 /* PersonCell.swift */,
 				06296CB01C7E516300C9BA88 /* MomentRootListViewController.swift */,
+				06D0E58F1C89F91F002345C1 /* MomentreeController.swift */,
 				06296CB41C7E518400C9BA88 /* MomentAssetViewController.swift */,
 				06296CB61C7E519000C9BA88 /* MomentGridViewCell.swift */,
 				06296CB21C7E517100C9BA88 /* MomentAssetGridViewController.swift */,
@@ -368,6 +374,7 @@
 				063D2EDE1C24FD3F00D42968 /* AncestorDescendentView.html in Resources */,
 				06D718E31BB0544800657ADF /* Main.storyboard in Resources */,
 				0670F2ED1C767E33002F508E /* Storyboard.storyboard in Resources */,
+				06D0E5921C89FEC1002345C1 /* momentree.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +463,7 @@
 				06296CAB1C7E3C9A00C9BA88 /* TestViewController.swift in Sources */,
 				0670F2F41C767F09002F508E /* UICollectionView+Convenience.swift in Sources */,
 				06296CB11C7E516300C9BA88 /* MomentRootListViewController.swift in Sources */,
+				06D0E5901C89F91F002345C1 /* MomentreeController.swift in Sources */,
 				0670F2EA1C767E33002F508E /* AssetViewController.swift in Sources */,
 				06D718DE1BB0544800657ADF /* AppDelegate.swift in Sources */,
 				0670F2EC1C767E33002F508E /* RootListViewController.swift in Sources */,

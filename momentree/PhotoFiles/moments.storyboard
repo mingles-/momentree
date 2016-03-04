@@ -184,10 +184,10 @@
             </objects>
             <point key="canvasLocation" x="2544" y="422"/>
         </scene>
-        <!--Moments Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="Gtx-k3-924">
             <objects>
-                <navigationController toolbarHidden="NO" id="AFw-ea-UbI" customClass="MomentsController" customModule="momentree" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="AFw-ea-UbI" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="o9t-Rx-LjY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

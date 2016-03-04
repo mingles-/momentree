@@ -15,7 +15,6 @@ private let CollectionSegue = "showCollection"
 
 
 
-
 class MomentRootListViewController: UITableViewController, PHPhotoLibraryChangeObserver {
     
     private var sectionFetchResults: [PHFetchResult] = []
@@ -40,6 +39,7 @@ class MomentRootListViewController: UITableViewController, PHPhotoLibraryChangeO
     
     
     override func awakeFromNib() {
+        
         
         let names = ["michael", "fiona", "Lesley"]
         
@@ -104,7 +104,6 @@ class MomentRootListViewController: UITableViewController, PHPhotoLibraryChangeO
     
         self.sectionFetchResults = [momentreeFetch]
 
-        
     }
     
 
@@ -143,7 +142,7 @@ class MomentRootListViewController: UITableViewController, PHPhotoLibraryChangeO
             
             assetGridViewController.assetsFetchResults = assetsFetchResult
             assetGridViewController.assetCollection = assetCollection
-            assetGridViewController.momentreeFetchResults = sectionFetchResults[0]
+            
         }
     }
     
