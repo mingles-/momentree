@@ -894,6 +894,9 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="r3D-t4-Zuz" eventType="touchDown" id="wPs-rA-Eda"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>

@@ -44,6 +44,11 @@ class MomentAssetGridViewController: UICollectionViewController, PHPhotoLibraryC
         PHPhotoLibrary.sharedPhotoLibrary().unregisterChangeObserver(self)
     }
     
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        globalMomentree = nil
+        self.dismissViewControllerAnimated(true, completion: {})
+
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
