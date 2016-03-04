@@ -1,14 +1,4 @@
-//
-//  AAPLRootListViewController.swift
-//  SamplePhotosApp
-//
-//  Translated by OOPer in cooperation with shlab.jp, on 2015/10/25.
-//
-//
 /*
- Copyright (C) 2015 Apple Inc. All Rights Reserved.
- See LICENSE.txt for this sample’s licensing information
-
  Abstract:
  The view controller displaying the root list of the app.
  */
@@ -25,64 +15,154 @@ private let CollectionSegue = "showCollection"
 
 class MomentRootListViewController: UITableViewController, PHPhotoLibraryChangeObserver {
     
-    @IBOutlet weak var momentsListLabel: UILabel!
-    
     private var sectionFetchResults: [PHFetchResult] = []
     private var sectionLocalizedTitles: [String] = []
-    
-    
+    private var momentreeList: [PHFetchResult] = []
+    private var someMoments: [PHAssetCollection] = []
     
     
     
     override func awakeFromNib() {
         
         
-        
-        // Get Lists of Photos of users based on names
-        let names = ["michael", "Faces", "fiona"]
+        // get albums based on person inputs through fetch options
+        let fetchOptions = PHFetchOptions()
+        let names = ["michael", "fiona", "Lesley"]
         var predicates = [NSPredicate] ()
+        
         for name in names {
             let predicate = NSPredicate(format: "%K == %@", "title", name)
             predicates.append(predicate)
         }
-        
+
         let compoundPedicate = NSCompoundPredicate(type: .OrPredicateType, subpredicates: predicates)
-        
-        let fetchOptions = PHFetchOptions()
         fetchOptions.predicate = compoundPedicate
-        
-        var momentsList = [PHFetchResult]()
-        
-        
         let albums: PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .Any, options: fetchOptions)
         
+        
+        
+        // iterate through and seperate out photos
         for i in 0...albums.count-1 {
             let album: PHAssetCollection = albums[i] as! PHAssetCollection
             
-            
             let photos: PHFetchResult = PHAsset.fetchAssetsInAssetCollection(album, options: nil)
             
+            // iterate through photos and collect each moment
             for j in 0...photos.count-1 {
                 let photo: PHAsset = photos[j] as! PHAsset
                 let moment: PHFetchResult = PHAssetCollection.fetchAssetCollectionsContainingAsset(photo, withType: .Moment, options: nil)
-                momentsList.append(moment)
-                self.sectionLocalizedTitles.append(photo.localIdentifier)
+                
+                
+                let momentCollection: PHAssetCollection = moment[0] as! PHAssetCollection
+                
+                
+                // check if moment already exists before adding it
+                if !(self.sectionLocalizedTitles.contains(String(momentCollection.startDate!))) {
+                    self.sectionLocalizedTitles.append(String(momentCollection.startDate!))
+
+                    someMoments.append(momentCollection)
+                    self.momentreeList.append(moment)
+                }
+                
+                
+            }
+            
+        }
+//        
+//        var theMoments: PHFetchResult = PHAssetCollection.fetchMomentsInMomentList(self.someMoments, options: nil)
+        
+        
+        
+        
+        let momentreeOption = PHFetchOptions()
+        var form = ""
+        
+        var dates = [NSDate]()
+        
+        
+        
+        for s in someMoments {
+            let date = s.startDate
+            dates.append(date!)
+            
+            if s == someMoments[0] {
+                form = form + "(startDate == %@)"
+            } else {
+                form = form + " OR (startDate ==  %@)"
+            }
+            
+            
+            
+            
+        }
+        
+        let newMomentreePredicate = NSPredicate(format: form, argumentArray: dates)
+        
+        
+        momentreeOption.predicate = newMomentreePredicate
+        
+        
+        let momentreeAlbums: PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Moment, subtype: .Any, options: momentreeOption)
+        
+        
+        
+        PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+            PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle("test")
+            }, completionHandler: {success, error in
+                if !success {
+                    NSLog("Error creating album: %@", error!)
+                }
+        })
+        
+        
+        
+        var identifiers = [String]()
+        
+        var assets = [PHAsset]()
+        
+        for i in 0...momentreeAlbums.count-1 {
+            let album: PHAssetCollection = momentreeAlbums[i] as! PHAssetCollection
+            
+            identifiers.append(album.localIdentifier)
+            
+            let photoFetch: PHFetchResult = PHAsset.fetchAssetsInAssetCollection(album, options: nil)
+            for p in 0...photoFetch.count-1 {
+                let photo: PHAsset = photoFetch[p] as! PHAsset
+                identifiers.append(photo.localIdentifier)
+                
+                assets.append(photo)
+                
             }
             
             
             
         }
         
-        momentsList = Array(Set(momentsList))
         
-        self.sectionFetchResults = momentsList
-                
-        PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
+        
+        
+        let testOption = PHFetchOptions()
+        let testPredicate = NSPredicate(format: "%K == %@", "title", "momentree Album")
+        testOption.predicate = testPredicate
+        
+        let test: PHAssetCollection = PHAssetCollection.transientAssetCollectionWithAssets(assets, title: "momentree Album")
+        
+        let collectionList: PHCollectionList = PHCollectionList.transientCollectionListWithCollections([test], title: nil)
+        
+        let fetch: PHFetchResult = PHAssetCollection.fetchCollectionsInCollectionList(collectionList, options: nil)
+        print(fetch.count)
+        
+        
+    
+    
+    
+        self.sectionFetchResults = [fetch]
+        
+        
+        
     }
     
-    deinit {
-        PHPhotoLibrary.sharedPhotoLibrary().unregisterChangeObserver(self)
-    }
+
     
     //MARK: - UIViewController
     
@@ -118,6 +198,7 @@ class MomentRootListViewController: UITableViewController, PHPhotoLibraryChangeO
             
             assetGridViewController.assetsFetchResults = assetsFetchResult
             assetGridViewController.assetCollection = assetCollection
+            assetGridViewController.momentreeFetchResults = sectionFetchResults[0]
         }
     }
     

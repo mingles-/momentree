@@ -1,10 +1,3 @@
-//
-//  AAPLAssetGridViewController.swift
-//  SamplePhotosApp
-//
-//  Translated by OOPer in cooperation with shlab.jp, on 2015/10/25.
-//
-//
 /*
  Copyright (C) 2015 Apple Inc. All Rights Reserved.
  See LICENSE.txt for this sample’s licensing information
@@ -19,14 +12,13 @@ import PhotosUI
 
 class MomentAssetGridViewController: UICollectionViewController, PHPhotoLibraryChangeObserver {
     
-    
+    var momentreeFetchResults: PHFetchResult?
     var assetsFetchResults: PHFetchResult?
     var assetCollection: PHAssetCollection?
     
     @IBOutlet private weak var addButton: UIBarButtonItem!
     private var imageManager: PHCachingImageManager?
     private var previousPreheatRect: CGRect = CGRect()
-    
     
     let CellReuseIdentifier = "Cell"
     static var AssetGridThumbnailSize: CGSize = CGSize()
@@ -50,12 +42,7 @@ class MomentAssetGridViewController: UICollectionViewController, PHPhotoLibraryC
         let cellSize = (self.collectionViewLayout as! UICollectionViewFlowLayout).itemSize
         AssetGridViewController.AssetGridThumbnailSize = CGSizeMake(cellSize.width * scale, cellSize.height * scale)
         
-        // Add button to the navigation bar if the asset collection supports adding content.
-        if self.assetCollection == nil || self.assetCollection!.canPerformEditOperation(.AddContent) {
-            self.navigationItem.rightBarButtonItem = self.addButton
-        } else {
-            self.navigationItem.rightBarButtonItem = nil
-        }
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -67,10 +54,14 @@ class MomentAssetGridViewController: UICollectionViewController, PHPhotoLibraryC
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Configure the destination AAPLAssetViewController.
-        if let assetViewController = segue.destinationViewController as? AssetViewController {
+        if let MomentAssetViewController = segue.destinationViewController as? MomentAssetViewController {
+            
+            
             let indexPath = self.collectionView!.indexPathForCell(sender as! UICollectionViewCell)!
-            assetViewController.asset = self.assetsFetchResults![indexPath.item] as? PHAsset
-            assetViewController.assetCollection = self.assetCollection
+            MomentAssetViewController.asset = self.assetsFetchResults![indexPath.item] as? PHAsset
+            MomentAssetViewController.assetCollection = self.assetCollection
+            
+            
         }
     }
     
@@ -138,10 +129,12 @@ class MomentAssetGridViewController: UICollectionViewController, PHPhotoLibraryC
     //MARK: - UICollectionViewDataSource
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return self.assetsFetchResults?.count ?? 0
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let asset = self.assetsFetchResults![indexPath.item] as! PHAsset
         
         // Dequeue an AAPLGridViewCell.
