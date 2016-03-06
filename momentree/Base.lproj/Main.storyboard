@@ -18,23 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5d-B9-tCo">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="add person"/>
-                                <variation key="widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="484" y="480" width="78" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="addPersonButton:" destination="DkW-rG-old" eventType="touchUpInside" id="MD9-UI-qV3"/>
-                                    <segue destination="y2c-1U-jRb" kind="show" id="dWB-fT-yzD"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dsT-6L-e7k">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="539" y="125" width="97" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="298" y="153" width="97" height="30"/>
                                 </variation>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new person:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PE-Ep-cuX">
@@ -45,6 +37,21 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="414" y="129" width="94" height="21"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="173" y="157" width="94" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="faces album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fe1-Sn-1X9">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="414" y="129" width="94" height="21"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="729" y="253" width="93" height="21"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="father" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQS-1A-f1J">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -53,6 +60,9 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="344" y="230" width="46" height="21"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="322" y="253" width="46" height="21"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mother" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ubw-aO-Hcd">
@@ -63,11 +73,17 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="629" y="230" width="55" height="21"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="318" y="488" width="55" height="21"/>
+                                </variation>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ryo-dh-Jxs">
                                 <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="227" y="250" width="281" height="216"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="205" y="273" width="281" height="216"/>
                                 </variation>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJ9-i6-PUF">
@@ -75,12 +91,15 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="516" y="250" width="281" height="216"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="205" y="508" width="281" height="216"/>
+                                </variation>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqb-LD-VqH">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="add existing person"/>
+                                <state key="normal" title="add existing father"/>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="109" y="226" width="213" height="30"/>
+                                    <rect key="frame" x="128" y="249" width="135" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="fatherModeChangePressed:" destination="DkW-rG-old" eventType="touchDown" id="CsV-hF-Z8o"/>
@@ -91,7 +110,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="608" y="276" width="97" height="30"/>
+                                    <rect key="frame" x="297" y="534" width="97" height="30"/>
                                 </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mta-IN-TjV">
@@ -99,26 +118,55 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="319" y="276" width="97" height="30"/>
+                                    <rect key="frame" x="297" y="299" width="97" height="30"/>
                                 </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbo-5V-ZFc">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="add existing person"/>
+                                <state key="normal" title="add existing mother"/>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="702" y="226" width="257" height="30"/>
+                                    <rect key="frame" x="123" y="484" width="144" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="motherChangeModePressed:" destination="DkW-rG-old" eventType="touchDown" id="WUC-Wu-4cN"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqc-NH-18t">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem width="878" id="TGD-I6-7dd"/>
+                                    <barButtonItem width="100" style="plain" id="Yxs-9Y-Cvs">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="j5d-B9-tCo">
+                                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="add person"/>
+                                            <variation key="widthClass=regular" fixedFrame="YES">
+                                                <rect key="frame" x="484" y="480" width="78" height="30"/>
+                                            </variation>
+                                            <connections>
+                                                <action selector="addPersonButton:" destination="DkW-rG-old" eventType="touchUpInside" id="MD9-UI-qV3"/>
+                                                <segue destination="y2c-1U-jRb" kind="show" id="dWB-fT-yzD"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
+                                </variation>
+                            </toolbar>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4CV-Ee-vsd">
+                                <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="644" y="250" width="262" height="261"/>
+                                </variation>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="j5d-B9-tCo"/>
                                 <exclude reference="dsT-6L-e7k"/>
                                 <exclude reference="9PE-Ep-cuX"/>
+                                <exclude reference="Fe1-Sn-1X9"/>
                                 <exclude reference="BQS-1A-f1J"/>
                                 <exclude reference="Ubw-aO-Hcd"/>
                                 <exclude reference="ryo-dh-Jxs"/>
@@ -127,11 +175,12 @@
                                 <exclude reference="yxW-nx-Ayt"/>
                                 <exclude reference="Mta-IN-TjV"/>
                                 <exclude reference="mbo-5V-ZFc"/>
+                                <exclude reference="kqc-NH-18t"/>
+                                <exclude reference="4CV-Ee-vsd"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
                             <mask key="subviews">
-                                <include reference="j5d-B9-tCo"/>
                                 <include reference="dsT-6L-e7k"/>
                                 <include reference="9PE-Ep-cuX"/>
                                 <include reference="BQS-1A-f1J"/>
@@ -142,16 +191,20 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
+                                <include reference="Fe1-Sn-1X9"/>
                                 <include reference="bqb-LD-VqH"/>
                                 <include reference="yxW-nx-Ayt"/>
                                 <include reference="Mta-IN-TjV"/>
                                 <include reference="mbo-5V-ZFc"/>
+                                <include reference="kqc-NH-18t"/>
+                                <include reference="4CV-Ee-vsd"/>
                             </mask>
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="addPersonFamilyBuilderButton" destination="j5d-B9-tCo" id="k3O-iC-xCV"/>
+                        <outlet property="albumPicker" destination="4CV-Ee-vsd" id="2SD-Bk-tAY"/>
                         <outlet property="fatherChangeMode" destination="bqb-LD-VqH" id="Cvk-my-5ij"/>
                         <outlet property="fatherPersonBox" destination="Mta-IN-TjV" id="UuC-32-EA6"/>
                         <outlet property="fatherPicker" destination="ryo-dh-Jxs" id="tck-HQ-gj1"/>
@@ -185,6 +238,9 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="453" y="137" width="58" height="21"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="249" y="140" width="58" height="21"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qw-mX-SeL">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -193,6 +249,9 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="529" y="137" width="195" height="21"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="325" y="140" width="195" height="21"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="father" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCn-Qf-AG3">
@@ -203,6 +262,21 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="356" y="240" width="46" height="21"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="324" y="192" width="46" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="faces album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJh-zs-Rlp">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="356" y="240" width="46" height="21"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="717" y="192" width="93" height="21"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mother" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzK-ij-iLR">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -212,11 +286,17 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="641" y="240" width="55" height="21"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="320" y="440" width="55" height="21"/>
+                                </variation>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfX-Zu-atQ">
                                 <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="239" y="260" width="281" height="216"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="207" y="212" width="281" height="216"/>
                                 </variation>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Uh-7B-pA8">
@@ -224,24 +304,16 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="528" y="260" width="281" height="216"/>
                                 </variation>
-                            </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQk-34-Ep3">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="save"/>
-                                <variation key="widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="496" y="484" width="32" height="30"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="207" y="460" width="281" height="216"/>
                                 </variation>
-                                <connections>
-                                    <action selector="addPersonButton:" destination="mM4-4E-JEr" eventType="touchDown" id="X24-hU-ebC"/>
-                                    <segue destination="y2c-1U-jRb" kind="show" id="66T-M8-S0k"/>
-                                </connections>
-                            </button>
+                            </pickerView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kHM-h6-xMN">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="623" y="286" width="97" height="30"/>
+                                    <rect key="frame" x="302" y="486" width="97" height="30"/>
                                 </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DhE-c8-adD">
@@ -249,14 +321,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="334" y="286" width="97" height="30"/>
+                                    <rect key="frame" x="302" y="238" width="97" height="30"/>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STm-Dj-Tu4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STm-Dj-Tu4">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="add new mother"/>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="717" y="236" width="257" height="30"/>
+                                    <rect key="frame" x="48" y="436" width="257" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="motherChangeModePressed:" destination="mM4-4E-JEr" eventType="touchDown" id="wjA-du-FM0"/>
@@ -266,12 +338,44 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="add new father"/>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="124" y="236" width="213" height="30"/>
+                                    <rect key="frame" x="92" y="188" width="213" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="fatherModeChangePressed:" destination="mM4-4E-JEr" eventType="touchDown" id="aIb-er-oyh"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bL3-xP-b38">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem width="928" id="P5v-99-SJ9"/>
+                                    <barButtonItem style="plain" id="dY4-pB-FDi">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gQk-34-Ep3">
+                                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="save"/>
+                                            <variation key="widthClass=regular" fixedFrame="YES">
+                                                <rect key="frame" x="496" y="484" width="32" height="30"/>
+                                            </variation>
+                                            <connections>
+                                                <action selector="addPersonButton:" destination="mM4-4E-JEr" eventType="touchDown" id="X24-hU-ebC"/>
+                                                <segue destination="y2c-1U-jRb" kind="show" id="66T-M8-S0k"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
+                                </variation>
+                            </toolbar>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8k7-5j-YiB">
+                                <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="239" y="260" width="281" height="216"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="623" y="212" width="281" height="216"/>
+                                </variation>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -279,14 +383,16 @@
                                 <exclude reference="wLt-ac-Xze"/>
                                 <exclude reference="2qw-mX-SeL"/>
                                 <exclude reference="rCn-Qf-AG3"/>
+                                <exclude reference="eJh-zs-Rlp"/>
                                 <exclude reference="jzK-ij-iLR"/>
                                 <exclude reference="hfX-Zu-atQ"/>
                                 <exclude reference="7Uh-7B-pA8"/>
-                                <exclude reference="gQk-34-Ep3"/>
                                 <exclude reference="kHM-h6-xMN"/>
                                 <exclude reference="DhE-c8-adD"/>
                                 <exclude reference="STm-Dj-Tu4"/>
                                 <exclude reference="s8O-U2-0gg"/>
+                                <exclude reference="bL3-xP-b38"/>
+                                <exclude reference="8k7-5j-YiB"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
@@ -297,20 +403,23 @@
                                 <include reference="jzK-ij-iLR"/>
                                 <include reference="hfX-Zu-atQ"/>
                                 <include reference="7Uh-7B-pA8"/>
-                                <include reference="gQk-34-Ep3"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
+                                <include reference="eJh-zs-Rlp"/>
                                 <include reference="kHM-h6-xMN"/>
                                 <include reference="DhE-c8-adD"/>
                                 <include reference="STm-Dj-Tu4"/>
                                 <include reference="s8O-U2-0gg"/>
+                                <include reference="bL3-xP-b38"/>
+                                <include reference="8k7-5j-YiB"/>
                             </mask>
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="albumPicker" destination="8k7-5j-YiB" id="PnI-oF-mnu"/>
                         <outlet property="fatherChangeMode" destination="s8O-U2-0gg" id="frR-X8-Lcj"/>
                         <outlet property="fatherPersonBox" destination="DhE-c8-adD" id="rqI-9N-X70"/>
                         <outlet property="fatherPicker" destination="hfX-Zu-atQ" id="Nok-be-Nww"/>
@@ -324,68 +433,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvp-mK-7fW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1377.75" y="-1146"/>
-        </scene>
-        <!--Test View Controller-->
-        <scene sceneID="7gS-lH-OWI">
-            <objects>
-                <viewController id="G7d-ih-iqb" customClass="TestViewController" customModule="momentree" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4kA-Sd-7VE"/>
-                        <viewControllerLayoutGuide type="bottom" id="hfw-Ap-b1O"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7xA-Gp-Fge">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLa-Ij-sdA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
-                                </variation>
-                            </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="momentLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0E-ib-BLL">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="296" y="213" width="432" height="342"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drawing Moments for:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yb1-ep-6rc">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="372" y="184" width="280" height="21"/>
-                                </variation>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="VLa-Ij-sdA"/>
-                                <exclude reference="I0E-ib-BLL"/>
-                                <exclude reference="yb1-ep-6rc"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=regular">
-                            <mask key="subviews">
-                                <include reference="VLa-Ij-sdA"/>
-                                <include reference="I0E-ib-BLL"/>
-                                <include reference="yb1-ep-6rc"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
-                    <connections>
-                        <outlet property="momentListLabel" destination="I0E-ib-BLL" id="JKu-lO-n47"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t13-NM-VCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="547.5" y="-1134"/>
         </scene>
         <!--Family View-->
         <scene sceneID="nal-Ft-cZJ">
@@ -470,16 +517,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="-44" width="291" height="490"/>
-                                </variation>
                             </tableView>
                             <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39S-Xv-0At">
                                 <rect key="frame" x="407" y="64" width="361" height="960"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="299" y="-77" width="725" height="801"/>
-                                </variation>
                                 <connections>
                                     <outlet property="delegate" destination="y2c-1U-jRb" id="aUu-6e-AJP"/>
                                 </connections>
@@ -655,6 +696,7 @@
                         <outlet property="ancestorSliderView" destination="B0T-Na-hyn" id="GnP-ey-FI6"/>
                         <outlet property="descendantSlider" destination="HJt-UG-Pxf" id="Uuw-89-AKl"/>
                         <outlet property="descendantSliderView" destination="7WW-B1-kaQ" id="ee9-Ap-9pv"/>
+                        <outlet property="navigationBar" destination="WIL-lO-E70" id="8AM-vc-N87"/>
                         <outlet property="spouseLabel" destination="Ko6-85-Uu6" id="LtM-MA-5MB"/>
                         <outlet property="spouseSwitch" destination="3TE-Ww-Kf9" id="c1P-qK-USU"/>
                         <outlet property="table" destination="iRW-zA-dD5" id="AI3-8H-Vpv"/>
@@ -763,7 +805,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="64" width="800" height="492"/>
+                                    <rect key="frame" x="0.0" y="64" width="1024" height="492"/>
                                 </variation>
                             </view>
                         </subviews>
@@ -921,6 +963,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="66T-M8-S0k"/>
+        <segue reference="dWB-fT-yzD"/>
     </inferredMetricsTieBreakers>
 </document>
