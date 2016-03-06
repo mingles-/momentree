@@ -63,7 +63,24 @@ class FamilyTree {
         
         personList.append(self.owner!)
         
-        return personList
+        
+        // if any duplicates, remove them.
+        // TODO go back and fix this properly
+        
+        var personListNoDuplicates = [Person]()
+        for person1 in personList {
+            var count = 0
+            for person2 in personList {
+                if person1 === person2 {
+                    count += 1
+                }
+            }
+            if count == 1 {
+                personListNoDuplicates.append(person1)
+            }
+        }
+        
+        return personListNoDuplicates
     }
     
     func fullTree() -> [String:AnyObject]
