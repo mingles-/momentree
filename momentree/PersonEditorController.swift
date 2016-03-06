@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Photos
 
 class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate {
     
@@ -15,6 +16,9 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
     
     @IBOutlet weak var fatherPicker: UIPickerView!
     @IBOutlet weak var motherPicker: UIPickerView!
+    @IBOutlet weak var albumPicker: UIPickerView!
+    
+    
     var pickerDataSource = [Person]()
     
     @IBOutlet weak var saveButton: UIButton!
@@ -29,15 +33,23 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
     var fatherMode = true
     var motherMode = true
     
+    var albumPickerSource = [String]()
+    var albumIdentifiers = [String]()
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fatherPicker.dataSource = self
         fatherPicker.delegate = self
+        
         motherPicker.dataSource = self
         motherPicker.delegate = self
 
+        albumPicker.dataSource = self
+        albumPicker.delegate = self
+        
+        
         let thePerson = personArray[selectedPersonIndex]
         let nullPerson = Person(name: "")
         
@@ -45,6 +57,7 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
         tempPersonArray.append(nullPerson)
         var dadIndex = 0
         var mumIndex = 0
+        var albumIndex = 0
         
         nameLabel.text = thePerson.name
 
@@ -59,6 +72,10 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
         
         fatherPicker.hidden = false
         motherPicker.hidden = false
+        
+        albumPickerSource.append("")
+        albumIdentifiers.append("")
+        getAlbums()
         
         if thePerson.dad != nil {
             for p in pickerDataSource {
@@ -78,9 +95,32 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
             }
         }
         
+        if thePerson.albumTitle != nil {
+            for p in albumIdentifiers {
+                if (p == thePerson.albumTitle){
+                    break
+                }
+                albumIndex += 1
+            }
+        }
+        
         motherPicker.selectRow(mumIndex, inComponent: 0, animated: true)
         fatherPicker.selectRow(dadIndex, inComponent: 0, animated: true)
+        albumPicker.selectRow(albumIndex, inComponent: 0, animated: true)
         
+    }
+    
+    func getAlbums() {
+        
+        let albums: PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .Any, options: nil)
+        
+        for i in 0...albums.count-1 {
+            let album: PHAssetCollection = albums[i] as! PHAssetCollection
+            let localIdentifier: String = album.localIdentifier
+            albumPickerSource.append(album.localizedTitle!)
+            albumIdentifiers.append(localIdentifier)
+        }
+
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -88,11 +128,22 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerDataSource.count;
+        if pickerView == albumPicker {
+            return albumPickerSource.count
+        } else {
+            return pickerDataSource.count
+        }
+        
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerDataSource[row].name
+        if pickerView == albumPicker {
+            return albumPickerSource[row]
+        } else {
+            return pickerDataSource[row].name
+        }
+        
+        
     }
 
     @IBAction func addPersonButton(sender: AnyObject) {
@@ -139,10 +190,11 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
                     personArray[personArray.count-1].setSpouse(newMum)
                 }
 
-                
                 personArray.append(newMum)
                 newPerson.setMum(newMum)
                 }
+        
+        
         
             // assuming both aren't 0, set parents as spouse
             
@@ -151,7 +203,14 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
                 pickerDataSource[motherIndex].setSpouse(pickerDataSource[fatherIndex])
             }
         
+            let albumIndex = albumPicker.selectedRowInComponent(0)
         
+            if albumIndex != 0 {
+                newPerson.albumTitle = albumIdentifiers[albumIndex]
+                let albumName = albumPickerSource[albumIndex]
+                print("added album " + albumName)
+                
+            }
     
         
             personArray[selectedPersonIndex] = newPerson
