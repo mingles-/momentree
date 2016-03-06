@@ -30,17 +30,12 @@ class MomentreeController: UINavigationController {
                 names.append(person.albumTitle!)
             }
         }
-        
-        if names.count == 0 {
-            names = ["michael", "fiona", "Lesley"]
-        }
-        
-        
-        print(names)
-        
+                
         // get albums based person inputs
-        let fetchOptions = self.compoundPredicateGenerator("title", formatValues: names)
+        let fetchOptions = self.compoundPredicateGenerator("localIdentifier", formatValues: names)
         let albums: PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .Any, options: fetchOptions)
+        
+        if albums.count != 0 {
         
         // iterate through and seperate out photos
         for i in 0...albums.count-1 {
@@ -99,7 +94,11 @@ class MomentreeController: UINavigationController {
         self.sectionFetchResults = [momentreeFetch]
 
         globalMomentree = momentreeFetch
-
+            
+        } else {
+         globalMomentree = nil
+        }
+        
         
     }
 
