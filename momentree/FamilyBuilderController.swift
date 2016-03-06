@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Photos
 
 class FamilyBuilderController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate {
     
@@ -16,6 +17,7 @@ class FamilyBuilderController: UIViewController, UIPickerViewDataSource,UIPicker
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var fatherPicker: UIPickerView!
     @IBOutlet weak var motherPicker: UIPickerView!
+    @IBOutlet weak var albumPicker: UIPickerView!
     
     @IBOutlet weak var fatherChangeMode: UIButton!
     @IBOutlet weak var motherChangeMode: UIButton!
@@ -23,11 +25,13 @@ class FamilyBuilderController: UIViewController, UIPickerViewDataSource,UIPicker
     @IBOutlet weak var fatherPersonBox: UITextField!
     @IBOutlet weak var motherPersonBox: UITextField!
     
+    
     var fatherMode = false
     var motherMode = false
     
     var pickerDataSource = [Person]()
-    
+    var albumPickerSource = [String]()
+    var albumIdentifiers = [String]()
     
     
     override func viewDidLoad() {
@@ -36,6 +40,8 @@ class FamilyBuilderController: UIViewController, UIPickerViewDataSource,UIPicker
         fatherPicker.delegate = self
         motherPicker.dataSource = self
         motherPicker.delegate = self
+        albumPicker.dataSource = self
+        albumPicker.delegate = self
         
         var tempDataSource = personArray
         
@@ -43,10 +49,29 @@ class FamilyBuilderController: UIViewController, UIPickerViewDataSource,UIPicker
         tempDataSource.append(nullPerson)
         pickerDataSource = tempDataSource.reverse()
         
+        albumPickerSource.append("")
+        albumIdentifiers.append("")
+        
         fatherPicker.hidden = true
         motherPicker.hidden = true
         
+        getAlbums()
         
+        
+        
+        
+    }
+    
+    func getAlbums() {
+        
+        let albums: PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .Any, options: nil)
+        
+        for i in 0...albums.count-1 {
+            let album: PHAssetCollection = albums[i] as! PHAssetCollection
+            let localIdentifier: String = album.localIdentifier
+            albumPickerSource.append(album.localizedTitle!)
+            albumIdentifiers.append(localIdentifier)
+        }
         
         
     }
@@ -56,11 +81,23 @@ class FamilyBuilderController: UIViewController, UIPickerViewDataSource,UIPicker
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerDataSource.count;
+        if pickerView == albumPicker {
+            return albumPickerSource.count
+        } else {
+            return pickerDataSource.count
+        }
+        
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerDataSource[row].name
+        
+        if pickerView == albumPicker {
+            return albumPickerSource[row]
+        } else {
+            return pickerDataSource[row].name
+        }
+        
+        
     }
     
     
@@ -116,6 +153,7 @@ class FamilyBuilderController: UIViewController, UIPickerViewDataSource,UIPicker
             let newPerson = Person(name: nameTextField.text!)
             let fatherIndex = fatherPicker.selectedRowInComponent(0)
             let motherIndex = motherPicker.selectedRowInComponent(0)
+            let albumIndex = albumPicker.selectedRowInComponent(0)
             
             if fatherMode {
                 if pickerDataSource[fatherIndex].name != "" {
@@ -151,10 +189,20 @@ class FamilyBuilderController: UIViewController, UIPickerViewDataSource,UIPicker
                 personArray[personArray.count-1].setSpouse(personArray[personArray.count-2])
             }
             
+            if albumIndex != 0 {
+                newPerson.albumTitle = albumIdentifiers[albumIndex]
+                let albumName = albumPickerSource[albumIndex]
+                print("added album " + albumName)
+                
+            }
+            
+            
+            
+            
             personArray.append(newPerson)
             selectedPersonIndex = personArray.count-1
 
-            print("added person" + newPerson.name)
+            print("added person " + newPerson.name)
             
         }
         
