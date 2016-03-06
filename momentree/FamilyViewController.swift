@@ -37,6 +37,7 @@ var descendantHeight = descendantSliderValues.last!
 
 var selectedPersonIndex = 0
 
+
 var theTree = FamilyTree(owner: personArray[selectedPersonIndex], ancestorHeight: ancestorHeight, descendantHeight: descendantHeight, hasSpouse: true)
 
 class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
@@ -51,16 +52,20 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var descendantSlider: UISlider!
     @IBOutlet weak var descendantSliderView: UILabel!
     
+    @IBOutlet weak var navigationBar: UINavigationItem!
+    
     
     @IBOutlet weak var spouseLabel: UILabel!
     @IBOutlet weak var spouseSwitch: UISwitch!
     
     var hasSpouse = false
     var selectedPerson = Person(name: "")
+    var previousPersonIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         if personArray.count == 0 {
             personArray = [fiona, mingles, stuart, lesley, adam, emma, alex, francis, cathy, joan, rab, louis]
             // set inital person
@@ -81,8 +86,8 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         selectedPerson = personArray[selectedPersonIndex]
         if selectedPerson.spouse != nil {
-            hasSpouse = true
-            spouseSwitch.setOn(true, animated: true)
+            hasSpouse = false
+            spouseSwitch.setOn(false, animated: true)
         } else {
             hasSpouse = false
             spouseSwitch.setOn(false, animated: true)
@@ -102,18 +107,29 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.table.delegate = self
         self.table.dataSource = self
+
         self.table.reloadInputViews()
+        
         
         let url = NSMutableURLRequest(URL: NSBundle.mainBundle().URLForResource("AncestorDescendentView", withExtension:"html")!)
         
         webView.loadRequest(url)
+        print("here")
         
         
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
         
+        
+        // animated scroll to selected person
+        let ipath: NSIndexPath = NSIndexPath(forRow: selectedPersonIndex, inSection: table.numberOfSections-1)
+        table.scrollToRowAtIndexPath(ipath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+        
+        
         theTree = FamilyTree(owner: selectedPerson, ancestorHeight: ancestorHeight, descendantHeight: descendantHeight, hasSpouse: hasSpouse)
+        
+        navigationBar.title = selectedPerson.name
         
         // set List for momentree
         momentList = theTree.getPersonList()
@@ -123,13 +139,20 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         descendantSliderValues = theTree.descendantSlider
 
         ancestorSlider.maximumValue = Float(ancestorSliderValues.last!)
+        descendantSlider.maximumValue = Float(descendantSliderValues.last!)
+        
+        if self.previousPersonIndex != selectedPersonIndex {
+            ancestorSlider.value = ancestorSlider.maximumValue
+            descendantSlider.value = descendantSlider.maximumValue
+            webView.reload()
+        }
+        
         ancestorHeight = ancestorSliderValues[Int(ancestorSlider.value)]
         ancestorSliderView.text = String(ancestorHeight)
-        
-        
-        descendantSlider.maximumValue = Float(descendantSliderValues.last!)
         descendantHeight = descendantSliderValues[Int(descendantSlider.value)]
         descendantSliderView.text = String(descendantHeight)
+        
+        
         
         
         // edit color of sliders based on values
@@ -157,6 +180,8 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         }
        
+        
+        
         let jsonInput = JSON(theTree.fullTree()).rawString()
         
         var textToInput = "" + jsonInput! + ""
@@ -167,6 +192,8 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         webView.stringByEvaluatingJavaScriptFromString(script)
         webView.stringByEvaluatingJavaScriptFromString(script2)
+        
+        self.previousPersonIndex = selectedPersonIndex
         
     }
     
@@ -212,7 +239,10 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         selectedPerson = personArray[indexPath.row]
         selectedPersonIndex = indexPath.row
         webView.reload()
+        
     }
+    
+    
 
 
     override func didReceiveMemoryWarning() {
