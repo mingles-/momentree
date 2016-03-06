@@ -152,6 +152,7 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
         
             // set dad or remove dad
             let fatherIndex = fatherPicker.selectedRowInComponent(0)
+            let motherIndex = motherPicker.selectedRowInComponent(0)
         
             if fatherMode {
                 
@@ -159,6 +160,9 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
                 if pickerDataSource[fatherIndex].name != "" {
                     print("setting " + newPerson.name + " dad")
                     newPerson.setDad(pickerDataSource[fatherIndex])
+                    if motherIndex != 0 {
+                        pickerDataSource[motherIndex].setSpouse(pickerDataSource[fatherIndex])
+                    }
                 } else {
                     print("removing " + newPerson.name + " dad")
                     newPerson.removeDad()
@@ -173,12 +177,15 @@ class PersonEditorController: UIViewController, UIPickerViewDataSource,UIPickerV
         
         
             // set mum or remove mum
-            let motherIndex = motherPicker.selectedRowInComponent(0)
+        
         
             if motherMode {
                 if pickerDataSource[motherIndex].name != "" {
                     print("setting " + newPerson.name + " mum")
                     newPerson.setMum(pickerDataSource[motherIndex])
+                    if fatherIndex != 0 {
+                        pickerDataSource[fatherIndex].setSpouse(pickerDataSource[motherIndex])
+                    }
                 } else {
                     print("removing " + newPerson.name + " mum")
                     newPerson.removeMum()
