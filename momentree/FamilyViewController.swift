@@ -74,9 +74,6 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
             emma.setParents(rab, mum: joan)
             stuart.setParents(francis, mum: cathy)
             francis.setDad(louis)
-            mingles.setAlbumTitle("michael")
-            lesley.setAlbumTitle("Lesley")
-            fiona.setAlbumTitle("fiona")
             
             selectedPersonIndex = personArray.count-1
         }

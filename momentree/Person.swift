@@ -96,7 +96,6 @@ class Person: CustomStringConvertible {
     
     func removeChild(child: Person) {
         
-        print(self.name)
         for childIndex in 0...self.children.count-1 {
             if self.children[childIndex] === child {
                 self.children.removeAtIndex(childIndex)
