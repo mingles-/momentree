@@ -55,7 +55,7 @@ class MomentAssetGridViewController: UICollectionViewController, PHPhotoLibraryC
         // Determine the size of the thumbnails to request from the PHCachingImageManager
         let scale = UIScreen.mainScreen().scale
         let cellSize = (self.collectionViewLayout as! UICollectionViewFlowLayout).itemSize
-        AssetGridViewController.AssetGridThumbnailSize = CGSizeMake(cellSize.width * scale, cellSize.height * scale)
+         MomentAssetGridViewController.AssetGridThumbnailSize = CGSizeMake(cellSize.width * scale, cellSize.height * scale)
         
         
     }
@@ -168,7 +168,7 @@ class MomentAssetGridViewController: UICollectionViewController, PHPhotoLibraryC
         
         // Request an image for the asset from the PHCachingImageManager.
         self.imageManager?.requestImageForAsset(asset,
-            targetSize: AssetGridViewController.AssetGridThumbnailSize,
+            targetSize:  MomentAssetGridViewController.AssetGridThumbnailSize,
             contentMode: PHImageContentMode.AspectFill,
             options: nil)
             {result, info in
@@ -228,11 +228,11 @@ class MomentAssetGridViewController: UICollectionViewController, PHPhotoLibraryC
             
             // Update the assets the PHCachingImageManager is caching.
             self.imageManager?.startCachingImagesForAssets(assetsToStartCaching,
-                targetSize: AssetGridViewController.AssetGridThumbnailSize,
+                targetSize: MomentAssetGridViewController.AssetGridThumbnailSize,
                 contentMode: PHImageContentMode.AspectFill,
                 options: nil)
             self.imageManager?.stopCachingImagesForAssets(assetsToStopCaching,
-                targetSize: AssetGridViewController.AssetGridThumbnailSize,
+                targetSize: MomentAssetGridViewController.AssetGridThumbnailSize,
                 contentMode: PHImageContentMode.AspectFill,
                 options: nil)
             
