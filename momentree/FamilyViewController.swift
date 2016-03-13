@@ -114,7 +114,6 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let url = NSMutableURLRequest(URL: NSBundle.mainBundle().URLForResource("AncestorDescendentView", withExtension:"html")!)
         
         webView.loadRequest(url)
-        print("here")
         
         
     }
@@ -183,7 +182,6 @@ class FamilyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         let jsonInput = JSON(theTree.fullTree()).rawString()
-        
         var textToInput = "" + jsonInput! + ""
         textToInput = textToInput.stringByReplacingOccurrencesOfString("\n", withString: "")
         textToInput = textToInput.stringByReplacingOccurrencesOfString(" ", withString: "")
