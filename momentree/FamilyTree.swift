@@ -80,7 +80,7 @@ class FamilyTree {
             }
         }
         
-        return personListNoDuplicates
+        return personList
     }
     
     func fullTree() -> [String:AnyObject]
