@@ -68,7 +68,17 @@ class Person: CustomStringConvertible {
     
     func addChild(child: Person)
     {
-        self.children.append(child)
+        var hasChild = false
+        for c in self.children {
+            if c === child {
+                hasChild = true
+            }
+        }
+        
+        if !hasChild {
+            self.children.append(child)
+        }
+        
     }
     
     func removeMum()
