@@ -154,10 +154,13 @@ class FamilyBuilderController: UIViewController, UIPickerViewDataSource,UIPicker
             let fatherIndex = fatherPicker.selectedRowInComponent(0)
             let motherIndex = motherPicker.selectedRowInComponent(0)
             let albumIndex = albumPicker.selectedRowInComponent(0)
+            var addedFatherPicker = false
+            var addedFatherNew = false
             
             if fatherMode {
                 if pickerDataSource[fatherIndex].name != "" {
                     newPerson.setDad(pickerDataSource[fatherIndex])
+                    addedFatherPicker = true
                 }
             } else {
                 if fatherPersonBox.text! != "" {
@@ -165,29 +168,41 @@ class FamilyBuilderController: UIViewController, UIPickerViewDataSource,UIPicker
                     newPerson.setDad(newFather)
                     personArray.append(newFather)
                     print("added father")
+                    addedFatherNew = true
                 }
             }
             
             if motherMode {
                 if pickerDataSource[motherIndex].name != "" {
                     newPerson.setMum(pickerDataSource[motherIndex])
+                    if addedFatherPicker {
+                        pickerDataSource[motherIndex].setSpouse(pickerDataSource[fatherIndex])
+                    } else if addedFatherNew {
+                        pickerDataSource[motherIndex].setSpouse(personArray[personArray.count-1])
+                    }
                 }
             } else {
                 if motherPersonBox.text! != "" {
                     let newMother = Person(name: motherPersonBox.text!)
                     newPerson.setMum(newMother)
+                    
+                    if addedFatherPicker {
+                        newMother.setSpouse(pickerDataSource[fatherIndex])
+                    } else if addedFatherNew {
+                        newMother.setSpouse(personArray[personArray.count-1])
+                    }
                     personArray.append(newMother)
                     print("added mother")
                 }
             }
             
-            if motherMode && fatherMode {
-                if pickerDataSource[fatherIndex].name != "" && pickerDataSource[motherIndex].name != "" {
-                    pickerDataSource[motherIndex].setSpouse(pickerDataSource[fatherIndex])
-                }
-            } else if motherPersonBox.text! != "" && fatherPersonBox.text! != "" {
-                personArray[personArray.count-1].setSpouse(personArray[personArray.count-2])
-            }
+//            if motherMode && fatherMode {
+//                if pickerDataSource[fatherIndex].name != "" && pickerDataSource[motherIndex].name != "" {
+//                    pickerDataSource[motherIndex].setSpouse(pickerDataSource[fatherIndex])
+//                }
+//            } else if motherPersonBox.text! != "" && fatherPersonBox.text! != "" {
+//                personArray[personArray.count-1].setSpouse(personArray[personArray.count-2])
+//            }
             
             if albumIndex != 0 {
                 newPerson.albumTitle = albumIdentifiers[albumIndex]
