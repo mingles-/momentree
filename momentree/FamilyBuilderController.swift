@@ -64,7 +64,11 @@ class FamilyBuilderController: UIViewController, UIPickerViewDataSource,UIPicker
     
     func getAlbums() {
         
-        let albums: PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .Any, options: nil)
+        let albumOptions = PHFetchOptions()
+        albumOptions.sortDescriptors = [NSSortDescriptor(key: "localizedTitle", ascending: true)]
+
+        
+        let albums: PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .Any, options: albumOptions)
         
         for i in 0...albums.count-1 {
             let album: PHAssetCollection = albums[i] as! PHAssetCollection
