@@ -66,6 +66,7 @@ class MomentreeController: UINavigationController {
             momentIdentifiers.append(identifier)
         }
         let momentreeOption = compoundPredicateGenerator("localIdentifier", formatValues: momentIdentifiers)
+        momentreeOption.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: true)]
         let momentreeAlbums: PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Moment, subtype: .Any, options: momentreeOption)
         
         
@@ -87,7 +88,11 @@ class MomentreeController: UINavigationController {
         
         let momentreeAssetCollection: PHAssetCollection = PHAssetCollection.transientAssetCollectionWithAssets(assets, title: "momentree Album")
         
+            
         let momentreeCollectionList: PHCollectionList = PHCollectionList.transientCollectionListWithCollections([momentreeAssetCollection], title: nil)
+        
+//        let dataOptions = PHFetchOptions()
+//        dataOptions.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: false)]
         
         let momentreeFetch: PHFetchResult = PHAssetCollection.fetchCollectionsInCollectionList(momentreeCollectionList, options: nil)
         
